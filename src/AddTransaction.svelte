@@ -76,7 +76,7 @@
 
 	aside {
 		width: 24rem;
-		font-size: 1.25rem;
+		font-size: 1.125rem;
 		line-height: 1.5rem;
 		margin-top: 3.5rem;
 	}
@@ -88,6 +88,14 @@
 		justify-items: flex-start;
 		gap: 0px;
 	}
+
+    h2 {
+        color: #eab308;
+        padding-bottom: 0.75rem;
+        font-weight: 700;
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+    }
 
 	input,
 	select {
