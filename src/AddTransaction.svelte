@@ -62,6 +62,8 @@
 				>Amount:
 				<input type="text" name="amount" id="amount" placeholder="$0.00" bind:value={amount} />
 			</label>
+
+			<button type="submit"> Submit </button>
 		</form>
 	</aside>
 </div>
@@ -94,6 +96,17 @@
 		color: black;
 		border-radius: 0.25rem;
 		margin: 0.5rem;
+	}
+
+	button {
+		background-color: #15803d;
+		padding: 0.25rem 0.5rem;
+		margin: 1rem 0;
+		border-radius: 0.25rem;
+	}
+
+	button:hover {
+		background-color: #166534;
 	}
 
 	input[type='checkbox'] {
