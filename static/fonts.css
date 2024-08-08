@@ -1,0 +1,6 @@
+.noto-sans {
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  src: url('$lib/fonts/NotoSans-VariableFont_wdth,wght.ttf')
+}
