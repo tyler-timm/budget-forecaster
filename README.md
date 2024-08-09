@@ -3,3 +3,5 @@
 ## A Budget Tracking app built with Sveltekit
 
 Based on money-track built in Next.js
+
+`npm run dev -- --open`
