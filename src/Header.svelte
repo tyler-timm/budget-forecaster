@@ -15,6 +15,7 @@
 		position: fixed;
 		width: 100%;
 		z-index: 20;
+        background-color: #264653;
 	}
 
 	.inner-container {
@@ -29,4 +30,8 @@
 		padding: 1.25rem;
 		color: #eab308;
 	}
+
+    img {
+        display: inline;
+    }
 </style>

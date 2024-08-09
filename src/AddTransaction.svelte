@@ -21,10 +21,9 @@
 </script>
 
 <div class="container">
-	<h2>Add Transaction</h2>
-
 	<aside>
 		<form>
+			<h2>Add Transaction</h2>
 			<label for="date"
 				>Date:
 				<input type="date" name="date" id="date" bind:value={date} />
@@ -70,7 +69,7 @@
 
 <style>
 	.container {
-		margin-top: 8rem;
+		margin-top: 9rem;
 		margin-left: 2.5rem;
 	}
 
@@ -89,13 +88,13 @@
 		gap: 0px;
 	}
 
-    h2 {
-        color: #eab308;
-        padding-bottom: 0.75rem;
-        font-weight: 700;
-        font-size: 1.25rem;
-        line-height: 1.75rem;
-    }
+	h2 {
+		color: #eab308;
+		padding-bottom: 0.75rem;
+		font-weight: 700;
+		font-size: 1.25rem;
+		line-height: 1.75rem;
+	}
 
 	input,
 	select {
