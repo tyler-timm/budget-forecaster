@@ -15,14 +15,29 @@
 	<td class="mobile-hide">{recurring}</td>
 	<td>{transaction.description}</td>
 	<td class="mobile-hide">{transactionType}</td>
-	<td>{(transaction.amount / 100).toFixed(2)}</td>
+	<td>${(transaction.amount / 100).toFixed(2)}</td>
+	<td>
+		<button>X</button>
+	</td>
 </tr>
 
 <style>
-    td {
-        padding-left: 0.25rem;
-        padding-right: 0.25rem;
-    }
+	td {
+		padding-left: 0.25rem;
+		padding-right: 0.25rem;
+	}
+
+	button {
+		border: 1px solid white;
+		background-color: transparent;
+		color: white;
+		border-radius: 0.25rem;
+		font-size: 1rem;
+	}
+
+	button:hover {
+		background-color: #7f1d1d;
+	}
 
 	.mobile-hide {
 		display: none;
