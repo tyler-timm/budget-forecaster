@@ -19,9 +19,15 @@
 </tr>
 
 <style>
+    td {
+        padding-left: 0.25rem;
+        padding-right: 0.25rem;
+    }
+
 	.mobile-hide {
 		display: none;
 	}
+
 	@media (min-width: 640px) {
 		.mobile-hide {
 			display: table-cell;

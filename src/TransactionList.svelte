@@ -66,7 +66,6 @@
 	}
 
 	th {
-		padding: 0.5rem;
 		font-weight: 700;
 		position: sticky;
 		top: 9rem;
