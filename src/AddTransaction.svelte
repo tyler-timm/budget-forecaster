@@ -110,9 +110,12 @@
 
 	button {
 		background-color: #15803d;
+        color: white;
 		padding: 0.25rem 0.5rem;
 		margin: 1rem 0;
 		border-radius: 0.25rem;
+        border-color: transparent;
+        font-size: 1rem;
 	}
 
 	button:hover {
