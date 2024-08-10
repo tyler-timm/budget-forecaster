@@ -9,7 +9,6 @@
 	.container {
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
 		align-items: center;
 		top: 0px;
 		position: fixed;
@@ -20,6 +19,7 @@
 
 	.inner-container {
 		display: flex;
+		align-items: center;
 	}
 
 	h1 {
