@@ -90,6 +90,8 @@
 		color: #eab308;
 		font-weight: 700;
 		font-size: 1.5rem;
+        margin-bottom: 0.25rem;
+        margin-top: 0.25rem;
 	}
 
 	input,

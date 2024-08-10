@@ -49,6 +49,8 @@
 		color: #eab308;
 		font-weight: 700;
 		font-size: 1.5rem;
+        margin-bottom: 0.25rem;
+        margin-top: 0.25rem;
 	}
 
     table {
@@ -56,7 +58,8 @@
     }
 
     th {
-        padding: 0.5rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
     }
 
     td {
