@@ -18,7 +18,7 @@
 	<table>
 		<tbody>
 			<tr>
-				<th>Date</th>
+				<th>Day</th>
 				<th>Description</th>
 				<th>Amount</th>
 			</tr>
@@ -36,25 +36,42 @@
 </aside>
 
 <style>
-    .container {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        flex-wrap: wrap;
-        gap: 1.25rem;
-        right: 0.5rem;
+	.container {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		flex-wrap: wrap;
+		gap: 1.25rem;
+		right: 0.5rem;
+	}
+
+	h2 {
+		color: #eab308;
+		font-weight: 700;
+		font-size: 1.5rem;
+	}
+
+    table {
+        font-size: 1.125rem;
     }
 
-    @media (min-width: 640px) {
-    .container {
-        justify-content: center;
-        gap: 0.5rem;
+    th {
+        padding: 0.5rem;
     }
 
-    @media (min-width: 1280px) {
-    .container {
-        position: fixed;
+    td {
+        padding: 0.5rem;
     }
-}
-}
+
+	@media (min-width: 640px) {
+		.container {
+			justify-content: center;
+			gap: 0.5rem;
+		}
+	}
+	@media (min-width: 1280px) {
+		.container {
+			position: fixed;
+		}
+	}
 </style>

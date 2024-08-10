@@ -13,3 +13,10 @@
 	<td>${(transaction.amount / 100).toFixed(2)}</td>
 	<td>X</td>
 </tr>
+
+<style>
+    td {
+        padding-left: 0.25rem;
+        padding-right: 0.25rem;
+    }
+</style>
