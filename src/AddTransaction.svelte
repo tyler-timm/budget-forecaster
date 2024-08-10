@@ -44,7 +44,6 @@
 					type="text"
 					name="description"
 					id="description"
-					placeholder="Description"
 					bind:value={description}
 				/>
 			</label>
@@ -76,8 +75,6 @@
 	aside {
 		width: 24rem;
 		font-size: 1.125rem;
-		line-height: 1.5rem;
-		margin-top: 3.5rem;
 	}
 
 	form {
@@ -86,14 +83,13 @@
 		align-items: start;
 		justify-items: flex-start;
 		gap: 0px;
+		line-height: 2rem;
 	}
 
 	h2 {
 		color: #eab308;
-		padding-bottom: 0.75rem;
 		font-weight: 700;
-		font-size: 1.25rem;
-		line-height: 1.75rem;
+		font-size: 1.5rem;
 	}
 
 	input,
@@ -103,7 +99,12 @@
 		color: black;
 		border-radius: 0.25rem;
 		margin: 0.5rem;
+        font-size: 1.25rem;
 	}
+
+    label {
+        font-size: 1.25rem;
+    }
 
 	button {
 		background-color: #15803d;
