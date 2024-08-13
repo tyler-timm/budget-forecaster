@@ -1,7 +1,7 @@
 <script>
-    import MinimalTransaction from './MinimalTransaction.svelte';
-    export let transactionsData;
-    console.log('recurring transaction data', transactionsData);
+	import MinimalTransaction from './MinimalTransaction.svelte';
+	export let transactionsData;
+	console.log('recurring transaction data', transactionsData);
 
 	let total = 0;
 
@@ -26,7 +26,7 @@
 			{#each recurringTransactions as transaction}
 				<MinimalTransaction {transaction} />
 			{/each}
-/
+
 			<tr>
 				<td colspan="2">Total</td>
 				<td>{total}</td>
@@ -49,22 +49,22 @@
 		color: #eab308;
 		font-weight: 700;
 		font-size: 1.5rem;
-        margin-bottom: 0.25rem;
-        margin-top: 0.25rem;
+		margin-bottom: 0.25rem;
+		margin-top: 0.25rem;
 	}
 
-    table {
-        font-size: 1.125rem;
-    }
+	table {
+		font-size: 1.125rem;
+	}
 
-    th {
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
-    }
+	th {
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+	}
 
-    td {
-        padding: 0.5rem;
-    }
+	td {
+		padding: 0.5rem;
+	}
 
 	@media (min-width: 640px) {
 		.container {
