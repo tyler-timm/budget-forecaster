@@ -1,9 +1,8 @@
 <script>
     import MinimalTransaction from './MinimalTransaction.svelte';
-    export let data;
+    export let transactionsData;
+    console.log('recurring transaction data', transactionsData);
 
-    console.log('recurring transaction data', data);
-	let transactionsData = data;
 	let total = 0;
 
 	let recurringTransactions = transactionsData.filter((tran) => tran.recurring);

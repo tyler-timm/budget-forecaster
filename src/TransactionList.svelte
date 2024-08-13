@@ -1,12 +1,10 @@
 <script>
 	import Transaction from './Transaction.svelte';
-    export let data;
+	export let transactionsData;
+    console.log('transactionsData', transactionsData);
 
-    console.log('data', data);
-
-	let transactionsData = data;
 	let total = 0;
-	let rucurrences = 3;
+	let rucurrences = 3;  // TODO: use input field to set this value
 	// transactionsData.forEach(tran => {
 	for (const tran of transactionsData) {
 		total += tran.amount / 100;
