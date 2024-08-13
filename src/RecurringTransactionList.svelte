@@ -1,15 +1,16 @@
 <script>
-	import { transactions } from './stores.js';
-	import MinimalTransaction from './MinimalTransaction.svelte';
+    import MinimalTransaction from './MinimalTransaction.svelte';
+    export let data;
 
-	let transactionsData = $transactions;
+    console.log('recurring transaction data', data);
+	let transactionsData = data;
 	let total = 0;
 
 	let recurringTransactions = transactionsData.filter((tran) => tran.recurring);
 	recurringTransactions.forEach((tran) => (total += tran.amount / 100));
 	recurringTransactions.sort((a, b) => new Date(a.date) - new Date(b.date));
 
-	console.log('transactions', transactions);
+	console.log('recurringTransactions', recurringTransactions);
 	total = total.toFixed(2);
 </script>
 
@@ -26,7 +27,7 @@
 			{#each recurringTransactions as transaction}
 				<MinimalTransaction {transaction} />
 			{/each}
-
+/
 			<tr>
 				<td colspan="2">Total</td>
 				<td>{total}</td>

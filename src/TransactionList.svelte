@@ -1,8 +1,10 @@
 <script>
-	import { transactions } from './stores.js';
 	import Transaction from './Transaction.svelte';
+    export let data;
 
-	let transactionsData = $transactions;
+    console.log('data', data);
+
+	let transactionsData = data;
 	let total = 0;
 	let rucurrences = 3;
 	// transactionsData.forEach(tran => {

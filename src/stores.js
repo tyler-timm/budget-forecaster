@@ -1,13 +1,7 @@
 import { writable } from 'svelte/store';
-import sql from '$lib/db';
+import { getTransactions } from '$lib/db';
 
-async function getTransactions() {
-    const result = await sql`select * from transactions`;
-    console.log(result);
-    return result;
-}
-
-const transactionList = getTransactions();
+const transactionList = await getTransactions();
 console.log('transactionList', transactionList);
 
 export const transactions = writable(transactionList);

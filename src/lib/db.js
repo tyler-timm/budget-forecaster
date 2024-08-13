@@ -13,11 +13,8 @@ const sql = postgres({
     },
 });
 
-async function getPgVersion() {
-    const result = await sql`select version()`;
-    console.log(result);
+export async function getTransactions() {
+    const result = await sql`select * from transaction`;
+    console.log('sql result', result);
+    return JSON.stringify(result); 
 }
-
-getPgVersion();
-
-export default sql;
