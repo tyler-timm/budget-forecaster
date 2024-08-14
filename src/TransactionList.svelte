@@ -1,7 +1,6 @@
 <script>
 	import Transaction from './Transaction.svelte';
 	export let transactionsData;
-    console.log('transactionsData', transactionsData);
 
 	let total = 0;
 	let rucurrences = 3;  // TODO: use input field to set this value
@@ -13,7 +12,6 @@
 				let newTran = { ...tran };
 				const tranDate = new Date(tran.date);
 				newTran.date = new Date(tranDate).setMonth(tranDate.getMonth() + i);
-				transactionsData.push(newTran);
 				transactionsData = [...transactionsData, newTran];
 				total += tran.amount / 100;
 			}

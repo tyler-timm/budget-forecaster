@@ -1,5 +1,5 @@
 <script>
-	import { deleteTransaction } from '$lib/db.js';
+	import { enhance } from '$app/forms';
 	export let transaction;
 
 	let transactionType = transaction.type;
@@ -18,7 +18,11 @@
 	<td class="mobile-hide">{transactionType}</td>
 	<td>${(transaction.amount / 100).toFixed(2)}</td>
 	<td>
-		<button on:click={() => deleteTransaction(transaction.id)}>X</button>
+        <form method="POST" action="?/delete" use:enhance>
+            <input type="hidden" name="id" value={transaction.id} />            
+            <input type="hidden" name="transactionsData" />            
+		    <button>X</button>
+        </form>
 	</td>
 </tr>
 

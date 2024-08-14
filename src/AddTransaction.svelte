@@ -1,16 +1,18 @@
 <script>
+    import { enhance } from '$app/forms';
+
 	let transactionTypes = [
 		{
-			id: 1,
+			id: 'deposit',
 			name: 'Deposit'
 		},
 		{
-			id: 2,
+			id: 'withdrawal',
 			name: 'Withdrawal'
 		}
 	];
 
-	let selectedTransactionType;
+	let selectedTransactionType = 'deposit';
 
 	const today = new Date();
 	let date = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
@@ -22,7 +24,7 @@
 
 <div class="container">
 	<aside>
-		<form>
+		<form method="POST" action="?/create" use:enhance>
 			<h2>Add Transaction</h2>
 			<label for="date"
 				>Date:
@@ -32,7 +34,7 @@
 				>Type:
 				<select name="type" id="type" bind:value={selectedTransactionType}>
 					{#each transactionTypes as transactionType}
-						<option value={transactionType}>
+						<option value={transactionType.id}>
 							{transactionType.name}
 						</option>
 					{/each}
@@ -61,7 +63,7 @@
 				<input type="text" name="amount" id="amount" placeholder="$0.00" bind:value={amount} />
 			</label>
 
-			<button type="submit"> Submit </button>
+			<button type="submit">Submit</button>
 		</form>
 	</aside>
 </div>

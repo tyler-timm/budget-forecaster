@@ -1,7 +1,6 @@
 <script>
 	import MinimalTransaction from './MinimalTransaction.svelte';
 	export let transactionsData;
-	console.log('recurring transaction data', transactionsData);
 
 	let total = 0;
 
@@ -9,7 +8,6 @@
 	recurringTransactions.forEach((tran) => (total += tran.amount / 100));
 	recurringTransactions.sort((a, b) => new Date(a.date) - new Date(b.date));
 
-	console.log('recurringTransactions', recurringTransactions);
 	total = total.toFixed(2);
 </script>
 

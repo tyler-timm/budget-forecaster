@@ -15,13 +15,20 @@ const sql = postgres({
 
 export async function getTransactions() {
     const result = await sql`select * from transaction`;
-    console.log('sql result', result);
     return JSON.stringify(result); 
 }
 
 export async function deleteTransaction(id) {
-    console.log(`deleting transaction ${id}`);
     const result = await sql`delete from transaction where id = ${id}`;
-    console.log('sql result', result);
+    console.log('delete result', result);
+    return JSON.stringify(result);
+}
+
+export async function addTransaction(transaction) {
+    const result = await sql`insert into transaction
+    (description, type, amount, date, recurring)
+    values
+    (${transaction.description}, ${transaction.type}, ${transaction.amount}, ${transaction.date}, ${transaction.recurring})`;
+    console.log('create result', result);
     return JSON.stringify(result);
 }
