@@ -1,5 +1,6 @@
 <script>
 	import Header from '../Header.svelte';
+    import '$lib/reset.css';
 </script>
 
 <Header />
