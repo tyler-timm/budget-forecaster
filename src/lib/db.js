@@ -18,3 +18,10 @@ export async function getTransactions() {
     console.log('sql result', result);
     return JSON.stringify(result); 
 }
+
+export async function deleteTransaction(id) {
+    console.log(`deleting transaction ${id}`);
+    const result = await sql`delete from transaction where id = ${id}`;
+    console.log('sql result', result);
+    return JSON.stringify(result);
+}

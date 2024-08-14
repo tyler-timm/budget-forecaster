@@ -1,4 +1,5 @@
 <script>
+	import { deleteTransaction } from '$lib/db.js';
 	export let transaction;
 
 	let transactionType = transaction.type;
@@ -17,7 +18,7 @@
 	<td class="mobile-hide">{transactionType}</td>
 	<td>${(transaction.amount / 100).toFixed(2)}</td>
 	<td>
-		<button>X</button>
+		<button on:click={() => deleteTransaction(transaction.id)}>X</button>
 	</td>
 </tr>
 
