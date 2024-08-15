@@ -24,7 +24,7 @@
 
 <div class="container">
 	<aside>
-		<form method="POST" action="?/create" use:enhance>
+		<form method="POST" action="?/create">
 			<h2>Add Transaction</h2>
 			<label for="date"
 				>Date:

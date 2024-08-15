@@ -1,5 +1,4 @@
 <script>
-	import { enhance } from '$app/forms';
 	export let transaction;
 
 	let transactionType = transaction.type;
@@ -18,9 +17,9 @@
 	<td class="mobile-hide">{transactionType}</td>
 	<td>${(transaction.amount / 100).toFixed(2)}</td>
 	<td>
-        <form method="POST" action="?/delete" use:enhance>
-            <input type="hidden" name="id" value={transaction.id} />            
-            <input type="hidden" name="transactionsData" />            
+        <form method="POST" action="?/delete">
+            <input type="hidden" name="id" value={transaction.id} />
+            <input type="hidden" name="transactionsData" />
 		    <button>X</button>
         </form>
 	</td>
