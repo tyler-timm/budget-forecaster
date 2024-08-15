@@ -40,7 +40,7 @@
 		justify-content: flex-end;
 		flex-wrap: wrap;
 		gap: 1.25rem;
-		right: 0.5rem;
+		right: 2rem;
 	}
 
 	h2 {

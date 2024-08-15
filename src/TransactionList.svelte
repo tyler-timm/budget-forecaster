@@ -66,7 +66,7 @@
 	th {
 		font-weight: 700;
 		position: sticky;
-		top: 9rem;
+		top: 6rem;
 		z-index: 10;
 		background-color: #264653;
 	}

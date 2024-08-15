@@ -70,7 +70,7 @@
 
 <style>
 	.container {
-		margin-top: 9rem;
+		margin-top: 6rem;
 		margin-left: 2.5rem;
 	}
 
