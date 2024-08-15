@@ -15,7 +15,7 @@ const sql = postgres({
 
 export async function getTransactions() {
     const result = await sql`select * from transaction`;
-    return JSON.stringify(result); 
+    return JSON.stringify(result);
 }
 
 export async function deleteTransaction(id) {
@@ -25,6 +25,9 @@ export async function deleteTransaction(id) {
 }
 
 export async function addTransaction(transaction) {
+    if (transaction.amount <= 0) {
+        throw new Error('amount must be greater than 0');
+    }
     const result = await sql`insert into transaction
     (description, type, amount, date, recurring)
     values

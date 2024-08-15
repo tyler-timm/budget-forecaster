@@ -11,6 +11,7 @@ export const actions = {
         console.log('formData', formData);
 
         let amount = formData.get('amount');
+        if (amount <= 0 ) return; // TODO: show error
         amount = amount * 100;
 
         const newTransactionData = {
