@@ -6,14 +6,20 @@
 	let rucurrences = 3;  // TODO: use input field to set this value
 	// transactionsData.forEach(tran => {
 	for (const tran of transactionsData) {
-		total += tran.amount / 100;
+        let amount = tran.amount;
+        if (tran.type === 'withdrawal') {
+            amount = amount * -1;
+        }
+        amount = amount / 100;
+
+		total += amount;
 		if (tran.recurring) {
 			for (let i = 1; i < rucurrences; i++) {
 				let newTran = { ...tran };
 				const tranDate = new Date(tran.date);
 				newTran.date = new Date(tranDate).setMonth(tranDate.getMonth() + i);
 				transactionsData = [...transactionsData, newTran];
-				total += tran.amount / 100;
+				total += amount;
 			}
 		}
 	}
