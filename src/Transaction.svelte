@@ -14,6 +14,8 @@
         amount = amount * -1;
     }
     amount = amount.toFixed(2);
+
+    let runningTotal = (transaction.runningTotal / 100).toFixed(2);
 </script>
 
 <tr>
@@ -22,7 +24,9 @@
 	<td>{transaction.description}</td>
 	<td class="mobile-hide">{transactionType}</td>
 	<td class='currency'>${amount}</td>
+    <td class='mobile-hide currency'>${runningTotal}</td>
 	<td>
+        <!-- Call delete function in +page.server.js -->
         <form method="POST" action="?/delete">
             <input type="hidden" name="id" value={transaction.id} />
             <input type="hidden" name="transactionsData" />

@@ -3,14 +3,14 @@
 	export let transactionsData;
 
 	let total = 0;
-	let rucurrences = 3;  // TODO: use input field to set this value
+	let rucurrences = 3; // TODO: use input field to set this value
 	// transactionsData.forEach(tran => {
 	for (const tran of transactionsData) {
-        let amount = tran.amount;
-        if (tran.type === 'withdrawal') {
-            amount = amount * -1;
-        }
-        amount = amount / 100;
+		let amount = tran.amount;
+		if (tran.type === 'withdrawal') {
+			amount = amount * -1;
+		}
+		amount = amount / 100;
 
 		total += amount;
 		if (tran.recurring) {
@@ -25,7 +25,16 @@
 	}
 
 	transactionsData.sort((a, b) => new Date(a.date) - new Date(b.date));
-	// console.log('transactionsData', transactionsData);
+	let runningTotal = 0;
+	for (let transaction of transactionsData) {
+		let amount = transaction.amount;
+		if (transaction.type === 'withdrawal') {
+			amount = amount * -1;
+		}
+        runningTotal = runningTotal + amount;
+		transaction.runningTotal = runningTotal;
+	}
+
 	total = total.toFixed(2);
 </script>
 
@@ -38,6 +47,7 @@
 				<th>Description</th>
 				<th class="mobile-hide">Type</th>
 				<th>Amount</th>
+				<th class="mobile-hide">Running Total</th>
 				<th></th>
 			</tr>
 		</thead>

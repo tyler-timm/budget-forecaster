@@ -1,6 +1,4 @@
 <script>
-    import { enhance } from '$app/forms';
-
 	let transactionTypes = [
 		{
 			id: 'deposit',

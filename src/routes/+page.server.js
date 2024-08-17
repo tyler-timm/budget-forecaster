@@ -14,11 +14,17 @@ export const actions = {
         if (amount <= 0 ) return; // TODO: show error
         amount = amount * 100;
 
+        let recurringMonthly = formData.get('recurring-monthly');
+        let recurring = false;
+        if (recurringMonthly === 'on') {
+            recurring = true;
+        }
+
         const newTransactionData = {
             date: formData.get('date') || new Date(),
             type: formData.get('type'),
             description: formData.get('description'),
-            recurring: formData.get('recurring-monthly'),
+            recurring: recurring,
             amount: amount
         }
         console.log('newTransactionData', newTransactionData);
