@@ -37,3 +37,15 @@ export async function addTransaction(transaction) {
 }
 
 // TODO editTransaction(id) - update transaction
+
+export async function createUser(id, username, password_hash) {
+    const result = await sql`insert into auth_user (id, username, password_hash) values (${id}, ${username}, ${password_hash})`;
+    console.log('create user result', result);
+    return JSON.stringify(result);
+}
+
+export async function getUser(username) {
+    const result = await sql`select username, password_hash from auth_user where username = ${username}`;
+    console.log('get user result', result);
+    return JSON.stringify(result);
+}
