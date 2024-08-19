@@ -1,12 +1,20 @@
 <script>
-	import { enhance } from "$app/forms";
+	import { enhance } from '$app/forms';
 </script>
 
-<h1>Sign up</h1>
-<form method="post" use:enhance>
-	<label for="username">Username</label>
-	<input name="username" id="username" /><br />
-	<label for="password">Password</label>
-	<input type="password" name="password" id="password" /><br />
-    <button>Continue</button>
-</form>
+<div class="container">
+	<h1>Sign up</h1>
+	<form method="post" use:enhance>
+		<label for="username">Username</label>
+		<input name="username" id="username" /><br />
+		<label for="password">Password</label>
+		<input type="password" name="password" id="password" /><br />
+		<button>Continue</button>
+	</form>
+</div>
+
+<style>
+	.container {
+		margin-top: 6rem;
+	}
+</style>
