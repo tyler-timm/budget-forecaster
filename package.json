@@ -18,6 +18,7 @@
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.36.0",
 		"globals": "^15.0.0",
+		"lucia": "^3.2.0",
 		"prettier": "^3.1.1",
 		"prettier-plugin-svelte": "^3.1.2",
 		"svelte": "^4.2.7",
@@ -25,6 +26,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@lucia-auth/adapter-postgresql": "^3.1.2",
 		"postgres": "^3.4.4"
 	}
 }

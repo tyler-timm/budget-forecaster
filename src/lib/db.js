@@ -1,7 +1,7 @@
 import postgres from 'postgres';
 import { PGHOST, PGDATABASE, PGUSER, PGPASSWORD, ENDPOINT_ID } from '$env/static/private';
 
-const sql = postgres({
+export const sql = postgres({
     host: PGHOST,
     database: PGDATABASE,
     username: PGUSER,
@@ -35,3 +35,5 @@ export async function addTransaction(transaction) {
     console.log('create result', result);
     return JSON.stringify(result);
 }
+
+// TODO editTransaction(id) - update transaction
