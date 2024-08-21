@@ -5,12 +5,24 @@
 	transactionType = transactionType.charAt(0).toUpperCase() + transactionType.slice(1);
 
 	let tranDate = new Date(transaction.date);
+
+    let amount = transaction.amount / 100;
+	if (transaction.type === 'withdrawal') {
+		amount = amount * -1;
+	}
+	amount = amount.toFixed(2);
 </script>
 
 <tr>
 	<td>{tranDate.getDate()}</td>
 	<td>{transaction.description}</td>
-	<td>${(transaction.amount / 100).toFixed(2)}</td>
+	{#if transaction.type === 'deposit'}
+		<td class="currency deposit">${amount}</td>
+	{:else if transaction.type === 'withdrawal'}
+		<td class="currency withdrawal">${amount}</td>
+	{:else}
+		<td class="currency">${amount}</td>
+	{/if}
 	<td>
         <button>X</button>
     </td>
@@ -20,6 +32,18 @@
     td {
         padding-left: 0.25rem;
         padding-right: 0.25rem;
+    }
+
+    .currency {
+		text-align: end;
+	}
+
+    .deposit {
+        color: #16a34a;
+    }
+
+    .withdrawal {
+        color: #dc2626;
     }
 
     button {

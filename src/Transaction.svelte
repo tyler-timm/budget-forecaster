@@ -9,13 +9,13 @@
 
 	let recurring = transaction.recurring ? 'Yes' : 'No';
 
-    let amount = (transaction.amount / 100);
-    if(transaction.type === 'withdrawal') {
-        amount = amount * -1;
-    }
-    amount = amount.toFixed(2);
+	let amount = transaction.amount / 100;
+	if (transaction.type === 'withdrawal') {
+		amount = amount * -1;
+	}
+	amount = amount.toFixed(2);
 
-    let runningTotal = (transaction.runningTotal / 100).toFixed(2);
+	let runningTotal = (transaction.runningTotal / 100).toFixed(2);
 </script>
 
 <tr>
@@ -23,15 +23,21 @@
 	<td class="mobile-hide">{recurring}</td>
 	<td>{transaction.description}</td>
 	<td class="mobile-hide">{transactionType}</td>
-	<td class='currency'>${amount}</td>
-    <td class='mobile-hide currency'>${runningTotal}</td>
+	{#if transaction.type === 'deposit'}
+		<td class="currency deposit">${amount}</td>
+	{:else if transaction.type === 'withdrawal'}
+		<td class="currency withdrawal">${amount}</td>
+	{:else}
+		<td class="currency">${amount}</td>
+	{/if}
+	<td class="mobile-hide currency">${runningTotal}</td>
 	<td>
-        <!-- Call delete function in +page.server.js -->
-        <form method="POST" action="?/delete">
-            <input type="hidden" name="id" value={transaction.id} />
-            <input type="hidden" name="transactionsData" />
-		    <button>X</button>
-        </form>
+		<!-- Call delete function in +page.server.js -->
+		<form method="POST" action="?/delete">
+			<input type="hidden" name="id" value={transaction.id} />
+			<input type="hidden" name="transactionsData" />
+			<button>X</button>
+		</form>
 	</td>
 </tr>
 
@@ -57,8 +63,16 @@
 		display: none;
 	}
 
-    .currency {
-        text-align: end;
+	.currency {
+		text-align: end;
+	}
+
+    .deposit {
+        color: #16a34a;
+    }
+
+    .withdrawal {
+        color: #dc2626;
     }
 
 	@media (min-width: 640px) {
