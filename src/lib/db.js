@@ -45,7 +45,6 @@ export async function createUser(id, username, password_hash) {
 }
 
 export async function getUser(username) {
-    const result = await sql`select username, password_hash from auth_user where username = ${username}`;
-    console.log('get user result', result);
+    const result = await sql`select * from auth_user where username = ${username}`;
     return JSON.stringify(result);
 }

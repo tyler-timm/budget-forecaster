@@ -12,6 +12,6 @@
 <AddTransaction />
 <RecurringTransactionList transactionsData={transactions} />
 <TransactionList transactionsData={transactions} />
-<form method="post" use:enhance>
+<form method="post" action="?/signout" use:enhance>
     <button>Sign out</button>
 </form>
