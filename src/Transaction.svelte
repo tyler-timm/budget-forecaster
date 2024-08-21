@@ -68,11 +68,11 @@
 	}
 
     .deposit {
-        color: #16a34a;
+        color: #18d15c;
     }
 
     .withdrawal {
-        color: #dc2626;
+        color: #f72c2c;
     }
 
 	@media (min-width: 640px) {
