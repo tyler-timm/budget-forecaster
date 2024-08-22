@@ -73,7 +73,7 @@
 	}
 
 	aside {
-		width: 24rem;
+		width: 26rem;
 		font-size: 1.125rem;
 	}
 
@@ -84,14 +84,17 @@
 		justify-items: flex-start;
 		gap: 0px;
 		line-height: 2rem;
+		border: 1px solid white;
+		border-radius: 0.5rem;
+		padding: 1rem;
 	}
 
 	h2 {
 		color: #eab308;
 		font-weight: 700;
 		font-size: 1.5rem;
-        margin-bottom: 0.25rem;
-        margin-top: 0.25rem;
+		margin-bottom: 0.25rem;
+		margin-top: 0.25rem;
 	}
 
 	input,
@@ -101,21 +104,21 @@
 		color: black;
 		border-radius: 0.25rem;
 		margin: 0.5rem;
-        font-size: 1.25rem;
+		font-size: 1.25rem;
 	}
 
-    label {
-        font-size: 1.25rem;
-    }
+	label {
+		font-size: 1.25rem;
+	}
 
 	button {
 		background-color: #15803d;
-        color: white;
+		color: white;
 		padding: 0.25rem 0.5rem;
 		margin: 1rem 0;
 		border-radius: 0.25rem;
-        border-color: transparent;
-        font-size: 1rem;
+		border-color: transparent;
+		font-size: 1rem;
 	}
 
 	button:hover {

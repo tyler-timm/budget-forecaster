@@ -1,7 +1,12 @@
+<script>
+    import Signout from './Signout.svelte';
+</script>
+
 <div class="container">
 	<div class="inner-container">
 		<img src="./flying-piggy-bank.png" alt="flying piggy bank" width="90" height="90" />
 		<h1>Budget Forecaster</h1>
+        <Signout />
 	</div>
 </div>
 

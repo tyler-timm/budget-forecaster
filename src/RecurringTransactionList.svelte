@@ -41,6 +41,9 @@
 		flex-wrap: wrap;
 		gap: 1.25rem;
 		right: 2rem;
+        border: 1px solid white;
+        border-radius: 0.5rem;
+        padding: 1rem;
 	}
 
 	h2 {
