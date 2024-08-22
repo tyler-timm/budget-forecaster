@@ -85,6 +85,8 @@
 		top: 6rem;
 		z-index: 10;
 		background-color: #264653;
+        padding-left: .5rem;
+        padding-right: .5rem;
 	}
 
 	.mobile-hide {

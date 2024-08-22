@@ -84,9 +84,10 @@
 		justify-items: flex-start;
 		gap: 0px;
 		line-height: 2rem;
-		border: 1px solid white;
+		/* border: 1px solid white; */
 		border-radius: 0.5rem;
 		padding: 1rem;
+        background-color: #345f70;
 	}
 
 	h2 {
