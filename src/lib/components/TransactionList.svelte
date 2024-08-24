@@ -3,7 +3,7 @@
 	export let transactionsData;
 
 	let total = 0;
-	let rucurrences = 3; // TODO: use input field to set this value
+	let rucurrences = 2; // TODO: use input field to set this value
 	// transactionsData.forEach(tran => {
 	for (const tran of transactionsData) {
 		let amount = tran.amount;

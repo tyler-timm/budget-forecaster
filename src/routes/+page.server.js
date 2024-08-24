@@ -17,6 +17,7 @@ export const actions = {
         let amount = formData.get('amount');
         if (amount <= 0 ) return; // TODO: show error
         amount = amount * 100;
+        amount = parseInt(amount);
 
         let recurringMonthly = formData.get('recurring-monthly');
         let recurring = false;
