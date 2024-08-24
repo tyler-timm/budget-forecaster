@@ -4,8 +4,8 @@
 	let transactionType = transaction.type;
 	transactionType = transactionType.charAt(0).toUpperCase() + transactionType.slice(1);
 
-	let transactionDate = new Date(transaction.date);
-	transactionDate = `${transactionDate.getMonth() + 1}/${transactionDate.getDate()}/${transactionDate.getFullYear()}`;
+	const transactionDate = new Date(transaction.date);
+	const transactionDateString = `${transactionDate.getMonth() + 1}/${transactionDate.getDate()}/${transactionDate.getFullYear()}`;
 
 	let recurring = transaction.recurring ? 'Yes' : 'No';
 
@@ -19,7 +19,7 @@
 </script>
 
 <tr>
-	<td>{transactionDate}</td>
+	<td>{transactionDateString}</td>
 	<td class="mobile-hide">{recurring}</td>
 	<td>{transaction.description}</td>
 	<td class="mobile-hide">{transactionType}</td>
@@ -67,13 +67,13 @@
 		text-align: end;
 	}
 
-    .deposit {
-        color: #18d15c;
-    }
+	.deposit {
+		color: #18d15c;
+	}
 
-    .withdrawal {
-        color: #f72c2c;
-    }
+	.withdrawal {
+		color: #f72c2c;
+	}
 
 	@media (min-width: 640px) {
 		.mobile-hide {

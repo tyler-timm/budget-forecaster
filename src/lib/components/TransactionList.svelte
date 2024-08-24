@@ -12,11 +12,17 @@
 		}
 		amount = amount / 100;
 
+		let transactionDate = new Date(tran.date);
+		// Add 1 to day to get correct date
+		const tranDate = new Date(
+			`${transactionDate.getMonth() + 1}-${transactionDate.getDate() + 1}-${transactionDate.getFullYear()}`
+		);
+		tran.date = tranDate;
+
 		total += amount;
 		if (tran.recurring) {
 			for (let i = 1; i < rucurrences; i++) {
 				let newTran = { ...tran };
-				const tranDate = new Date(tran.date);
 				newTran.date = new Date(tranDate).setMonth(tranDate.getMonth() + i);
 				transactionsData = [...transactionsData, newTran];
 				total += amount;
@@ -31,7 +37,7 @@
 		if (transaction.type === 'withdrawal') {
 			amount = amount * -1;
 		}
-        runningTotal = runningTotal + amount;
+		runningTotal = runningTotal + amount;
 		transaction.runningTotal = runningTotal;
 	}
 
@@ -85,8 +91,8 @@
 		top: 6rem;
 		z-index: 10;
 		background-color: #264653;
-        padding-left: .5rem;
-        padding-right: .5rem;
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
 	}
 
 	.mobile-hide {
