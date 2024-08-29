@@ -48,9 +48,9 @@
 	}
 
 	button {
-		border: 1px solid white;
+		border: 1px solid black;
 		background-color: transparent;
-		color: white;
+		/* color: white; */
 		border-radius: 0.25rem;
 		font-size: 1rem;
 	}

@@ -11,7 +11,7 @@
 <style>
 	:root {
 		background-color: #264653;
-		color: #fff;
+		/* color: #fff; */
 		font-family: 'Noto Sans', sans-serif;
 	}
 </style>

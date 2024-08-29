@@ -42,13 +42,13 @@
 		gap: 1.25rem;
 		right: 2rem;
         /* border: 1px solid white; */
-        border-radius: 0.5rem;
+        border-radius: 1rem;
         padding: 1rem;
-        background-color: #345f70
+        background-color: #FFF;  
 	}
 
 	h2 {
-		color: #eab308;
+		/* color: #eab308; */
 		font-weight: 700;
 		font-size: 1.5rem;
 		margin-bottom: 0.25rem;

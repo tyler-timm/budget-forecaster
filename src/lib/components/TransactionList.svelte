@@ -83,14 +83,17 @@
 	table {
 		font-size: 1.125rem;
 		line-height: 1.75rem;
+		background-color: #fff;
+		border-radius: 1rem;
+		padding: 1rem;
 	}
 
 	th {
 		font-weight: 700;
-		position: sticky;
+		/* position: sticky; */
 		top: 6rem;
 		z-index: 10;
-		background-color: #264653;
+		background-color: #fff;
 		padding-left: 0.5rem;
 		padding-right: 0.5rem;
 	}
