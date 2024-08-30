@@ -22,7 +22,7 @@
 
 <div class="container">
 	<aside>
-		<form method="POST" action="?/create">
+		<form method="POST" action="?/create" class="shadow">
 			<h2>Add Transaction</h2>
 			<label for="date"
 				>Date:
@@ -40,12 +40,7 @@
 			</label>
 			<label for="description"
 				>Description:
-				<input
-					type="text"
-					name="description"
-					id="description"
-					bind:value={description}
-				/>
+				<input type="text" name="description" id="description" bind:value={description} />
 			</label>
 			<label for="recurring-monthly"
 				>Monthly:
@@ -87,7 +82,6 @@
 		/* border: 1px solid white; */
 		border-radius: 1rem;
 		padding: 1rem;
-        background-color: #FFF;
 	}
 
 	h2 {
@@ -135,5 +129,14 @@
 		aside {
 			position: fixed;
 		}
+	}
+
+	.shadow {
+		box-shadow:
+			0 1px 1px hsl(0deg 0% 0% / 0.075),
+			0 2px 2px hsl(0deg 0% 0% / 0.075),
+			0 4px 4px hsl(0deg 0% 0% / 0.075),
+			0 8px 8px hsl(0deg 0% 0% / 0.075),
+			0 16px 16px hsl(0deg 0% 0% / 0.075);
 	}
 </style>

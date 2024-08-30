@@ -10,7 +10,7 @@
 
 <style>
 	:root {
-		background-color: #264653;
+		/* background-color: #264653; */
 		/* color: #fff; */
 		font-family: 'Noto Sans', sans-serif;
 	}

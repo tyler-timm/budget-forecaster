@@ -11,7 +11,7 @@
 	total = total.toFixed(2);
 </script>
 
-<aside class="container">
+<aside class="container shadow">
 	<h2>Recurring Transactions</h2>
 	<table>
 		<tbody>
@@ -41,10 +41,9 @@
 		flex-wrap: wrap;
 		gap: 1.25rem;
 		right: 2rem;
-        /* border: 1px solid white; */
-        border-radius: 1rem;
-        padding: 1rem;
-        background-color: #FFF;  
+		/* border: 1px solid white; */
+		border-radius: 1rem;
+		padding: 1rem;
 	}
 
 	h2 {
@@ -78,5 +77,14 @@
 		.container {
 			position: fixed;
 		}
+	}
+
+	.shadow {
+		box-shadow:
+			0 1px 1px hsl(0deg 0% 0% / 0.075),
+			0 2px 2px hsl(0deg 0% 0% / 0.075),
+			0 4px 4px hsl(0deg 0% 0% / 0.075),
+			0 8px 8px hsl(0deg 0% 0% / 0.075),
+			0 16px 16px hsl(0deg 0% 0% / 0.075);
 	}
 </style>

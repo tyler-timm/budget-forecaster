@@ -45,7 +45,7 @@
 </script>
 
 <div class="container">
-	<table>
+	<table class="shadow">
 		<thead>
 			<tr>
 				<th>Date</th>
@@ -83,7 +83,6 @@
 	table {
 		font-size: 1.125rem;
 		line-height: 1.75rem;
-		background-color: #fff;
 		border-radius: 1rem;
 		padding: 1rem;
 	}
@@ -93,7 +92,6 @@
 		/* position: sticky; */
 		top: 6rem;
 		z-index: 10;
-		background-color: #fff;
 		padding-left: 0.5rem;
 		padding-right: 0.5rem;
 	}
@@ -111,5 +109,14 @@
 		.mobile-hide {
 			display: table-cell;
 		}
+	}
+
+    .shadow {
+		box-shadow:
+			0 1px 1px hsl(0deg 0% 0% / 0.075),
+			0 2px 2px hsl(0deg 0% 0% / 0.075),
+			0 4px 4px hsl(0deg 0% 0% / 0.075),
+			0 8px 8px hsl(0deg 0% 0% / 0.075),
+			0 16px 16px hsl(0deg 0% 0% / 0.075);
 	}
 </style>

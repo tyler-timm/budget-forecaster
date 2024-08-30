@@ -19,7 +19,7 @@
 		position: fixed;
 		width: 100%;
 		z-index: 20;
-        background-color: #264653;
+        background-color: #FFF;
 	}
 
 	.inner-container {
