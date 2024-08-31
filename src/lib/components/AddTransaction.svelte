@@ -22,7 +22,7 @@
 
 <div class="container">
 	<aside>
-		<form method="POST" action="?/create" class="shadow">
+		<form method="POST" action="?/create">
 			<h2>Add Transaction</h2>
 			<label for="date"
 				>Date:
@@ -64,7 +64,7 @@
 <style>
 	.container {
 		margin-top: 6rem;
-		margin-left: 2.5rem;
+		margin-left: 1.5rem;
 	}
 
 	aside {
@@ -82,6 +82,9 @@
 		/* border: 1px solid white; */
 		border-radius: 1rem;
 		padding: 1rem;
+		background-color: white;
+		margin-top: 1rem;
+        box-shadow: 0 10px 20px hsl(0deg 0% 0% / 0.5);
 	}
 
 	h2 {
@@ -129,14 +132,5 @@
 		aside {
 			position: fixed;
 		}
-	}
-
-	.shadow {
-		box-shadow:
-			0 1px 1px hsl(0deg 0% 0% / 0.075),
-			0 2px 2px hsl(0deg 0% 0% / 0.075),
-			0 4px 4px hsl(0deg 0% 0% / 0.075),
-			0 8px 8px hsl(0deg 0% 0% / 0.075),
-			0 16px 16px hsl(0deg 0% 0% / 0.075);
 	}
 </style>
