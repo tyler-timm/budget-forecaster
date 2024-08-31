@@ -35,6 +35,8 @@ export const actions = {
         console.log('newTransactionData', newTransactionData);
         const response = await addTransaction(newTransactionData);
         console.log('add transaction response', response);
+
+        return { success : true }
     },
 
     delete: async ({ request }) => {

@@ -1,4 +1,7 @@
 <script>
+    import { enhance } from '$app/forms';
+    import { invalidateAll } from '$app/navigation';
+
 	let transactionTypes = [
 		{
 			id: 'deposit',
@@ -22,7 +25,7 @@
 
 <div class="container">
 	<aside>
-		<form method="POST" action="?/create">
+		<form method="POST" action="?/create" use:enhance>
 			<h2>Add Transaction</h2>
 			<label for="date"
 				>Date:
@@ -56,7 +59,7 @@
 				<input type="text" name="amount" id="amount" placeholder="$0.00" bind:value={amount} />
 			</label>
 
-			<button type="submit">Submit</button>
+			<button type="submit" on:click={() => invalidateAll()}>Submit</button>
 		</form>
 	</aside>
 </div>
@@ -84,7 +87,7 @@
 		padding: 1rem;
 		background-color: white;
 		margin-top: 1rem;
-        box-shadow: 0 10px 20px hsl(0deg 0% 0% / 0.5);
+		box-shadow: 0 10px 20px hsl(0deg 0% 0% / 0.5);
 	}
 
 	h2 {
