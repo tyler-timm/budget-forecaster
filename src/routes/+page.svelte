@@ -4,10 +4,8 @@
 	import RecurringTransactionList from '$lib/components/RecurringTransactionList.svelte';
 
 	export let data;
-	let { transactions } = data;
-	transactions = JSON.parse(transactions);
 </script>
 
 <AddTransaction />
-<RecurringTransactionList transactionsData={transactions} />
-<TransactionList transactionsData={transactions} />
+<RecurringTransactionList {data} />
+<TransactionList {data} />

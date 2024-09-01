@@ -1,47 +1,8 @@
 <script>
 	import Transaction from './Transaction.svelte';
-	export let transactionsData;
-
-	let total = 0;
-	let rucurrences = 2; // TODO: use input field to set this value
-	// transactionsData.forEach(tran => {
-	for (const tran of transactionsData) {
-		let amount = tran.amount;
-		if (tran.type === 'withdrawal') {
-			amount = amount * -1;
-		}
-		amount = amount / 100;
-
-		let transactionDate = new Date(tran.date);
-		// Add 1 to day to get correct date
-		const tranDate = new Date(
-			`${transactionDate.getMonth() + 1}-${transactionDate.getDate() + 1}-${transactionDate.getFullYear()}`
-		);
-		tran.date = tranDate;
-
-		total += amount;
-		if (tran.recurring) {
-			for (let i = 1; i < rucurrences; i++) {
-				let newTran = { ...tran };
-				newTran.date = new Date(tranDate).setMonth(tranDate.getMonth() + i);
-				transactionsData = [...transactionsData, newTran];
-				total += amount;
-			}
-		}
-	}
-
-	transactionsData.sort((a, b) => new Date(a.date) - new Date(b.date));
-	let runningTotal = 0;
-	for (let transaction of transactionsData) {
-		let amount = transaction.amount;
-		if (transaction.type === 'withdrawal') {
-			amount = amount * -1;
-		}
-		runningTotal = runningTotal + amount;
-		transaction.runningTotal = runningTotal;
-	}
-
-	total = total.toFixed(2);
+	export let data;
+	$: transactions = data.transactionsWithRecurrences;
+	$: total = data.totalWithRecurrences;
 </script>
 
 <div class="container">
@@ -58,14 +19,14 @@
 			</tr>
 		</thead>
 		<tbody>
-			{#each transactionsData as transaction}
+			{#each transactions as transaction}
 				<Transaction {transaction} />
 			{/each}
 		</tbody>
 		<tfoot>
 			<tr>
 				<td colspan="4">Total:</td>
-				<td>{total}</td>
+				<td>{total.toFixed(2)}</td>
 			</tr>
 		</tfoot>
 	</table>

@@ -1,10 +1,12 @@
 <script>
 	import MinimalTransaction from './MinimalTransaction.svelte';
-	export let transactionsData;
+	export let data;
+    // $: transactions = data.transactions;
+    let { transactions } = data;
 
 	let total = 0;
 
-	let recurringTransactions = transactionsData.filter((tran) => tran.recurring);
+	let recurringTransactions = transactions.filter((tran) => tran.recurring);
 	recurringTransactions.forEach((tran) => (total += tran.amount / 100));
 	recurringTransactions.sort((a, b) => new Date(a.date) - new Date(b.date));
 
