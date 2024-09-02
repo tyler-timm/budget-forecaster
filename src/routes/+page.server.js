@@ -12,6 +12,8 @@ export async function load(event) {
     transactions = JSON.parse(transactions);
     let recurringTransactions = [];
     for (const tran of transactions) {
+        tran.clientId = tran.id;
+
         let amount = parseInt(tran.amount);
         if (tran.type === 'withdrawal') {
             amount = amount * -1;
@@ -30,6 +32,7 @@ export async function load(event) {
             for (let i = 1; i < recurrences; i++) {
                 let newTran = { ...tran };
                 newTran.date = new Date(tranDate).setMonth(tranDate.getMonth() + i);
+                newTran.clientId =`${tran.id}-${i}`;
                 transactions = [...transactions, newTran];
                 total = total + amount;
             }
@@ -70,8 +73,10 @@ export const actions = {
             recurring = true;
         }
 
+        const date = formData.get('date');
+
         const newTransactionData = {
-            date: formData.get('date') || new Date(),
+            date: date ? new Date(date) : new Date(),
             type: formData.get('type'),
             description: formData.get('description'),
             recurring: recurring,

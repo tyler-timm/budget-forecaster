@@ -11,7 +11,7 @@
 		background-color: #1744d8;
 		color: white;
 		line-height: 2rem;
-		padding: 0.5rem 0.5rem;
+		padding: 0.25rem 0.5rem;
 		border-radius: 0.25rem;
 		border: none;
 		font-size: 1rem;

@@ -4,7 +4,7 @@
 
 <div class="container">
 	<div class="inner-container">
-		<img src="./flying-piggy-bank.png" alt="flying piggy bank" width="90" height="90" />
+		<img src="./flying-piggy-bank.png" alt="flying piggy bank" width="60" height="60" />
 		<h1>Budget Forecaster</h1>
         <Signout />
 	</div>
@@ -14,7 +14,7 @@
 	.container {
 		display: flex;
 		flex-direction: column;
-		align-items: center;
+		/* align-items: center; */
 		top: 0px;
 		position: fixed;
 		width: 100%;
@@ -25,11 +25,12 @@
 	.inner-container {
 		display: flex;
 		align-items: center;
+        margin-left: 2rem;
 	}
 
 	h1 {
 		font-family: 'Noto Sans', sans-serif;
-		font-size: 3rem;
+		font-size: 2rem;
 		line-height: 1;
 		font-weight: 700;
 		padding: 1.25rem;

@@ -1,10 +1,13 @@
 <script>
+    import { enhance } from '$app/forms';
 	export let transaction;
 
 	let transactionType = transaction.type;
 	transactionType = transactionType.charAt(0).toUpperCase() + transactionType.slice(1);
 
+    console.log('transaction.date', transaction.date);
 	const transactionDate = new Date(transaction.date);
+    console.log('transactionDate', transactionDate);
 	const transactionDateString = `${transactionDate.getMonth() + 1}/${transactionDate.getDate()}/${transactionDate.getFullYear()}`;
 
 	let recurring = transaction.recurring ? 'Yes' : 'No';
@@ -23,17 +26,11 @@
 	<td class="mobile-hide">{recurring}</td>
 	<td>{transaction.description}</td>
 	<td class="mobile-hide">{transactionType}</td>
-	{#if transaction.type === 'deposit'}
-		<td class="currency deposit">${amount}</td>
-	{:else if transaction.type === 'withdrawal'}
-		<td class="currency withdrawal">${amount}</td>
-	{:else}
-		<td class="currency">${amount}</td>
-	{/if}
+	<td class="currency {transaction.type === 'deposit' ? 'deposit' : 'withdrawal'}">${amount}</td>
 	<td class="mobile-hide currency">${runningTotal}</td>
 	<td>
 		<!-- Call delete function in +page.server.js -->
-		<form method="POST" action="?/delete">
+		<form method="POST" action="?/delete" use:enhance>
 			<input type="hidden" name="id" value={transaction.id} />
 			<input type="hidden" name="transactionsData" />
 			<button>X</button>

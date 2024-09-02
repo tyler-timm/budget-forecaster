@@ -6,7 +6,7 @@
 
 	let tranDate = new Date(transaction.date);
 
-    let amount = transaction.amount / 100;
+	let amount = transaction.amount / 100;
 	if (transaction.type === 'withdrawal') {
 		amount = amount * -1;
 	}
@@ -16,37 +16,31 @@
 <tr>
 	<td>{tranDate.getDate()}</td>
 	<td>{transaction.description}</td>
-	{#if transaction.type === 'deposit'}
-		<td class="currency deposit">${amount}</td>
-	{:else if transaction.type === 'withdrawal'}
-		<td class="currency withdrawal">${amount}</td>
-	{:else}
-		<td class="currency">${amount}</td>
-	{/if}
+	<td class="currency {transaction.type === 'deposit' ? 'deposit' : 'withdrawal'}">${amount}</td>
 	<td>
-        <button>X</button>
-    </td>
+		<button>X</button>
+	</td>
 </tr>
 
 <style>
-    td {
-        padding-left: 0.25rem;
-        padding-right: 0.25rem;
-    }
+	td {
+		padding-left: 0.25rem;
+		padding-right: 0.25rem;
+	}
 
-    .currency {
+	.currency {
 		text-align: end;
 	}
 
-    .deposit {
-        color: #18d15c;
-    }
+	.deposit {
+		color: #18d15c;
+	}
 
-    .withdrawal {
-        color: #f72c2c;
-    }
+	.withdrawal {
+		color: #f72c2c;
+	}
 
-    button {
+	button {
 		border: 1px solid white;
 		background-color: transparent;
 		color: white;

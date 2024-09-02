@@ -19,7 +19,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			{#each transactions as transaction}
+			{#each transactions as transaction (transaction.clientId)}
 				<Transaction {transaction} />
 			{/each}
 		</tbody>
