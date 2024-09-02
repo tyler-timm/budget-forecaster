@@ -1,16 +1,8 @@
 <script>
 	import MinimalTransaction from './MinimalTransaction.svelte';
 	export let data;
-    // $: transactions = data.transactions;
-    let { transactions } = data;
-
-	let total = 0;
-
-	let recurringTransactions = transactions.filter((tran) => tran.recurring);
-	recurringTransactions.forEach((tran) => (total += tran.amount / 100));
-	recurringTransactions.sort((a, b) => new Date(a.date) - new Date(b.date));
-
-	total = total.toFixed(2);
+	$: transactions = data.recurringTransactions;
+	$: total = data.recurringTotal;
 </script>
 
 <aside class="container">
@@ -23,13 +15,13 @@
 				<th>Amount</th>
 			</tr>
 
-			{#each recurringTransactions as transaction}
+			{#each transactions as transaction}
 				<MinimalTransaction {transaction} />
 			{/each}
 
 			<tr>
 				<td colspan="2">Total</td>
-				<td>{total}</td>
+				<td class="currency">${(total / 100).toFixed(2)}</td>
 			</tr>
 		</tbody>
 	</table>
@@ -49,6 +41,10 @@
 		background-color: white;
 		margin-top: 1rem;
 		box-shadow: 0 10px 20px hsl(0deg 0% 0% / 0.5);
+	}
+
+    .currency {
+		text-align: end;
 	}
 
 	h2 {

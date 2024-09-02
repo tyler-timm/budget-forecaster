@@ -1,8 +1,8 @@
 <script>
 	import Transaction from './Transaction.svelte';
 	export let data;
-	$: transactions = data.transactionsWithRecurrences;
-	$: total = data.totalWithRecurrences;
+	$: transactions = data.transactions;
+	$: total = data.total;
 </script>
 
 <div class="container">
@@ -26,7 +26,7 @@
 		<tfoot>
 			<tr>
 				<td colspan="4">Total:</td>
-				<td>{total.toFixed(2)}</td>
+				<td class="currency">${(total / 100).toFixed(2)}</td>
 			</tr>
 		</tfoot>
 	</table>
@@ -62,6 +62,10 @@
 
 	.mobile-hide {
 		display: none;
+	}
+
+    .currency {
+		text-align: end;
 	}
 
 	@media (min-width: 640px) {

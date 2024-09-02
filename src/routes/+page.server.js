@@ -4,15 +4,15 @@ import { lucia } from "$lib/server/auth";
 
 export async function load(event) {
     if (!event.locals.user) redirect(302, "/login");
-    let total = 0;
-    let totalWithRecurrences = 0;
     const recurrences = 2;
+    let total = 0;
+    let recurringTotal = 0;
 
     let transactions = await getTransactions();
     transactions = JSON.parse(transactions);
-    let transactionsWithRecurrences = [...transactions];
+    let recurringTransactions = [];
     for (const tran of transactions) {
-        let amount = tran.amount;
+        let amount = parseInt(tran.amount);
         if (tran.type === 'withdrawal') {
             amount = amount * -1;
         }
@@ -25,22 +25,23 @@ export async function load(event) {
         tran.date = tranDate;
 
         total = total + amount;
-        totalWithRecurrences = totalWithRecurrences + amount;
 
         if (tran.recurring) {
             for (let i = 1; i < recurrences; i++) {
                 let newTran = { ...tran };
                 newTran.date = new Date(tranDate).setMonth(tranDate.getMonth() + i);
-                transactionsWithRecurrences = [...transactionsWithRecurrences, newTran];
-                totalWithRecurrences = totalWithRecurrences + amount;
+                transactions = [...transactions, newTran];
+                total = total + amount;
             }
+            recurringTransactions.push(tran)
+            recurringTotal = recurringTotal + amount;
         }
     }
 
     transactions.sort((a, b) => new Date(a.date) - new Date(b.date));
     let runningTotal = 0;
     for (let transaction of transactions) {
-        let amount = transaction.amount;
+        let amount = parseInt(transaction.amount);
         if (transaction.type === 'withdrawal') {
             amount = amount * -1;
         }
@@ -48,19 +49,9 @@ export async function load(event) {
         transaction.runningTotal = runningTotal;
     }
 
-    let runningTotalWithRecurrences = 0;
-    for (let transaction of transactionsWithRecurrences) {
-        let amount = transaction.amount;
-        if (transaction.type === 'withdrawal') {
-            amount = amount * -1;
-        }
-        runningTotalWithRecurrences = runningTotalWithRecurrences + amount;
-        transactionsWithRecurrences.runningTotal = runningTotalWithRecurrences;
-    }
-
     console.log('data loaded', new Date());
 
-    return { transactions, total, transactionsWithRecurrences, totalWithRecurrences };
+    return { transactions, total, recurringTransactions, recurringTotal };
 }
 
 export const actions = {
