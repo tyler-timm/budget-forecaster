@@ -15,7 +15,7 @@
 				<th>Amount</th>
 			</tr>
 
-			{#each transactions as transaction}
+			{#each transactions as transaction (transaction.id)}
 				<MinimalTransaction {transaction} />
 			{/each}
 

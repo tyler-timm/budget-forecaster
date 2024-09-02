@@ -47,9 +47,9 @@
 	button {
 		border: 1px solid black;
 		background-color: transparent;
-		/* color: white; */
 		border-radius: 0.25rem;
 		font-size: 1rem;
+        padding: 0 .5rem;
 	}
 
 	button:hover {
