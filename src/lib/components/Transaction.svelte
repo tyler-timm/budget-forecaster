@@ -5,9 +5,7 @@
 	let transactionType = transaction.type;
 	transactionType = transactionType.charAt(0).toUpperCase() + transactionType.slice(1);
 
-    console.log('transaction.date', transaction.date);
 	const transactionDate = new Date(transaction.date);
-    console.log('transactionDate', transactionDate);
 	const transactionDateString = `${transactionDate.getMonth() + 1}/${transactionDate.getDate()}/${transactionDate.getFullYear()}`;
 
 	let recurring = transaction.recurring ? 'Yes' : 'No';

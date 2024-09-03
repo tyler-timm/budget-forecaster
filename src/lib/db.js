@@ -25,7 +25,6 @@ export async function deleteTransaction(id) {
 }
 
 export async function addTransaction(transaction) {
-    console.log('transaction (db)', transaction);
     if (transaction.amount <= 0) {
         throw new Error('amount must be greater than 0');
     }

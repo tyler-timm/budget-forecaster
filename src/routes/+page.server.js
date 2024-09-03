@@ -19,10 +19,13 @@ export async function load(event) {
             amount = amount * -1;
         }
 
+        console.log('tran.date', tran.date);
         let transactionDate = new Date(tran.date);
-        // Add 1 to day to get correct date
+        // console.log('transactionDate', transactionDate);
+        console.log('transactionDateString', `${transactionDate.getMonth() + 1}-${transactionDate.getDate()}-${transactionDate.getFullYear()}`);
+
         const tranDate = new Date(
-            `${transactionDate.getMonth() + 1}-${transactionDate.getDate() + 1}-${transactionDate.getFullYear()}`
+            `${transactionDate.getMonth() + 1}-${transactionDate.getDate()}-${transactionDate.getFullYear()}`
         );
         tran.date = tranDate;
 
@@ -73,7 +76,9 @@ export const actions = {
             recurring = true;
         }
 
-        const date = formData.get('date');
+        let date = formData.get('date');
+        date = `${date}T00:00:00.000`;
+        console.log('formData date', date);
 
         const newTransactionData = {
             date: date ? new Date(date) : new Date(),
