@@ -6,7 +6,7 @@
 </script>
 
 <div class="container">
-	<table>
+	<table class="card-shadow">
 		<thead>
 			<tr>
 				<th>Date</th>
@@ -48,7 +48,6 @@
 		border-radius: 1rem;
 		padding: 1rem;
 		background-color: white;
-		box-shadow: 0 10px 20px hsl(0deg 0% 0% / 0.5);
 	}
 
 	th {

@@ -25,7 +25,7 @@
 
 <div class="container">
 	<aside>
-		<form method="POST" action="?/create" use:enhance>
+		<form method="POST" action="?/create" class="card-shadow" use:enhance>
 			<h2>Add Transaction</h2>
 			<label for="date"
 				>Date:
@@ -87,7 +87,6 @@
 		padding: 1rem;
 		background-color: white;
 		margin-top: 1rem;
-		box-shadow: 0 10px 20px hsl(0deg 0% 0% / 0.5);
 	}
 
 	h2 {

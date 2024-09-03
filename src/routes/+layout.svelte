@@ -1,6 +1,7 @@
 <script>
 	import Header from '$lib/components/Header.svelte';
     import '$lib/reset.css';
+    import '$lib/global-styles.css';
 </script>
 
 <Header />
@@ -10,7 +11,7 @@
 
 <style>
 	:root {
-		background-color: #E1E1E1;
+		/* background-color: #E1E1E1; */
 		/* color: #fff; */
 		font-family: 'Noto Sans', sans-serif;
 	}

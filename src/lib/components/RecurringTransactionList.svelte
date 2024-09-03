@@ -5,7 +5,7 @@
 	$: total = data.recurringTotal;
 </script>
 
-<aside class="container">
+<aside class="container card-shadow">
 	<h2>Recurring Transactions</h2>
 	<table>
 		<tbody>
@@ -40,7 +40,6 @@
 		padding: 1rem;
 		background-color: white;
 		margin-top: 1rem;
-		box-shadow: 0 10px 20px hsl(0deg 0% 0% / 0.5);
 	}
 
     .currency {
