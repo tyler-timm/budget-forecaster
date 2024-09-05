@@ -19,24 +19,17 @@ export async function load(event) {
             amount = amount * -1;
         }
 
-        console.log('tran.date', tran.date);
         let localDate = tran.date.replace('Z', '');
-        console.log('localDate', localDate);
         let transactionDate = new Date(localDate);
-        // console.log('transactionDate', transactionDate);
-        console.log('transactionDateString', `${transactionDate.getMonth() + 1}-${transactionDate.getDate()}-${transactionDate.getFullYear()}`);
 
-        const tranDate = new Date(
-            `${transactionDate.getMonth() + 1}-${transactionDate.getDate()}-${transactionDate.getFullYear()}`
-        );
-        tran.date = tranDate;
+        tran.date = transactionDate;
 
         total = total + amount;
 
         if (tran.recurring) {
             for (let i = 1; i < recurrences; i++) {
                 let newTran = { ...tran };
-                newTran.date = new Date(tranDate).setMonth(tranDate.getMonth() + i);
+                newTran.date = new Date(transactionDate).setMonth(transactionDate.getMonth() + i);
                 newTran.clientId = `${tran.id}-${i}`;
                 transactions = [...transactions, newTran];
                 total = total + amount;
@@ -81,7 +74,7 @@ export const actions = {
         let date = formData.get('date');
 
         const newTransactionData = {
-            date: date ? new Date(date) : new Date(),
+            date: date ? new Date(`${date}T00:00:00.000`) : new Date(),
             type: formData.get('type'),
             description: formData.get('description'),
             recurring: recurring,
