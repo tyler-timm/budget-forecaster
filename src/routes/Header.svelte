@@ -1,5 +1,5 @@
 <script>
-    import Signout from '$lib/components/Signout.svelte';
+    import Signout from './Signout.svelte';
 </script>
 
 <div class="container">
