@@ -6,7 +6,7 @@
 </script>
 
 <div class="container">
-	<table class="card-shadow">
+	<table>
 		<thead>
 			<tr>
 				<th>Date</th>
@@ -47,7 +47,7 @@
 		line-height: 1.75rem;
 		border-radius: 1rem;
 		padding: 1rem;
-		background-color: white;
+		/* background-color: white; */
 	}
 
 	th {

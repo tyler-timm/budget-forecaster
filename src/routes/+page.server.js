@@ -20,7 +20,9 @@ export async function load(event) {
         }
 
         console.log('tran.date', tran.date);
-        let transactionDate = new Date(tran.date);
+        let localDate = tran.date.replace('Z', '');
+        console.log('localDate', localDate);
+        let transactionDate = new Date(localDate);
         // console.log('transactionDate', transactionDate);
         console.log('transactionDateString', `${transactionDate.getMonth() + 1}-${transactionDate.getDate()}-${transactionDate.getFullYear()}`);
 
@@ -35,7 +37,7 @@ export async function load(event) {
             for (let i = 1; i < recurrences; i++) {
                 let newTran = { ...tran };
                 newTran.date = new Date(tranDate).setMonth(tranDate.getMonth() + i);
-                newTran.clientId =`${tran.id}-${i}`;
+                newTran.clientId = `${tran.id}-${i}`;
                 transactions = [...transactions, newTran];
                 total = total + amount;
             }
@@ -77,8 +79,6 @@ export const actions = {
         }
 
         let date = formData.get('date');
-        date = `${date}T00:00:00.000`;
-        console.log('formData date', date);
 
         const newTransactionData = {
             date: date ? new Date(date) : new Date(),

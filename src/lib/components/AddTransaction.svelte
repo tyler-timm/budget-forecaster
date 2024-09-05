@@ -1,6 +1,5 @@
 <script>
-    import { enhance } from '$app/forms';
-    import { invalidateAll } from '$app/navigation';
+	import { enhance } from '$app/forms';
 
 	let transactionTypes = [
 		{
@@ -14,10 +13,6 @@
 	];
 
 	let selectedTransactionType = 'deposit';
-
-	const today = new Date();
-	let date = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
-
 	let description;
 	let monthly = false;
 	let amount;
@@ -29,7 +24,7 @@
 			<h2>Add Transaction</h2>
 			<label for="date"
 				>Date:
-				<input type="date" name="date" id="date" bind:value={date} />
+				<input type="date" name="date" id="date" />
 			</label>
 			<label for="type"
 				>Type:
@@ -58,8 +53,8 @@
 				>Amount:
 				<input type="text" name="amount" id="amount" placeholder="$0.00" bind:value={amount} />
 			</label>
-
-			<button type="submit" on:click={() => invalidateAll()}>Submit</button>
+    
+            <button type="submit">Submit</button>
 		</form>
 	</aside>
 </div>

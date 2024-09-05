@@ -6,7 +6,6 @@
 	transactionType = transactionType.charAt(0).toUpperCase() + transactionType.slice(1);
 
 	const transactionDate = new Date(transaction.date);
-	const transactionDateString = `${transactionDate.getMonth() + 1}/${transactionDate.getDate()}/${transactionDate.getFullYear()}`;
 
 	let recurring = transaction.recurring ? 'Yes' : 'No';
 
@@ -20,7 +19,7 @@
 </script>
 
 <tr>
-	<td>{transactionDateString}</td>
+	<td>{transactionDate.toLocaleDateString()}</td>
 	<td class="mobile-hide">{recurring}</td>
 	<td>{transaction.description}</td>
 	<td class="mobile-hide">{transactionType}</td>
