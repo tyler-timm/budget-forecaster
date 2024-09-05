@@ -42,21 +42,21 @@
 	}
 
 	table {
-		margin-top: 1rem;
 		font-size: 1.125rem;
 		line-height: 1.75rem;
 		border-radius: 1rem;
-		padding: 1rem;
+		/* margin-top: .5rem; */
+		/* padding: 1rem; */
 		/* background-color: white; */
 	}
 
 	th {
 		font-weight: 700;
-		/* position: sticky; */
-		top: 6rem;
-		z-index: 10;
 		padding-left: 0.5rem;
 		padding-right: 0.5rem;
+		/* position: sticky; */
+		/* top: 6rem; */
+		/* z-index: 10; */
 	}
 
 	.mobile-hide {
