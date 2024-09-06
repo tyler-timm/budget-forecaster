@@ -35,7 +35,6 @@
 		flex-wrap: wrap;
 		gap: 1.25rem;
 		right: 1.5rem;
-		/* border: 1px solid white; */
 		border-radius: 1rem;
 		padding: 1rem;
 		background-color: white;
@@ -47,7 +46,6 @@
 	}
 
 	h2 {
-		/* color: #eab308; */
 		font-weight: 700;
 		font-size: 1.5rem;
 		margin-bottom: 0.25rem;
