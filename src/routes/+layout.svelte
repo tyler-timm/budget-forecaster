@@ -13,4 +13,8 @@
 	:root {
 		font-family: 'Noto Sans', sans-serif;
 	}
+
+    main {
+        margin: 1rem;
+    }
 </style>

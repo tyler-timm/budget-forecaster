@@ -17,7 +17,7 @@
 	let monthly = false;
 	let amount;
 
-    export let open = false;
+	export let open;
 </script>
 
 <div class="container">
@@ -55,27 +55,28 @@
 				>Amount:
 				<input type="text" name="amount" id="amount" placeholder="$0.00" bind:value={amount} />
 			</label>
-    
-            <button type="submit">Submit</button>
+
+			<button type="submit">Submit</button>
 		</form>
 	</aside>
 </div>
 
 <style>
-	.container {
-		margin-top: 6rem;
-		margin-left: 1.5rem;
-	}
-
-    .open {
-        left: 0;
+    .container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2rem;
+        margin-top: 1rem;
     }
 
+	.open {
+		left: 1rem;
+	}
+
 	aside {
-		width: 26rem;
 		font-size: 1.125rem;
-        left: -100%;
-        transition: left 0.3s ease-in-out;
+		left: -100%;
+		transition: left 0.3s ease-in-out;
 	}
 
 	form {
@@ -96,8 +97,6 @@
 		color: #000;
 		font-weight: 700;
 		font-size: 1.5rem;
-		margin-bottom: 0.25rem;
-		margin-top: 0.25rem;
 	}
 
 	input,
@@ -133,7 +132,7 @@
 		height: 1.5rem;
 	}
 
-	@media (min-width: 1280px) {
+	@media (min-width: 1560px) {
 		aside {
 			position: fixed;
 		}

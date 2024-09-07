@@ -5,33 +5,45 @@
 	$: total = data.recurringTotal;
 </script>
 
-<aside class="container card-shadow">
-	<h2>Recurring Transactions</h2>
-	<table>
-		<tbody>
-			<tr>
-				<th>Day</th>
-				<th>Description</th>
-				<th>Amount</th>
-			</tr>
+<div class="container">
+	<aside class="inner-container card-shadow">
+		<h2>Recurring Transactions</h2>
+		<table>
+			<tbody>
+				<tr>
+					<th>Day</th>
+					<th>Description</th>
+					<th>Amount</th>
+				</tr>
 
-			{#each transactions as transaction (transaction.id)}
-				<MinimalTransaction {transaction} />
-			{/each}
+				{#each transactions as transaction (transaction.id)}
+					<MinimalTransaction {transaction} />
+				{/each}
 
-			<tr>
-				<td colspan="2">Total</td>
-				<td class="currency">${(total / 100).toFixed(2)}</td>
-			</tr>
-		</tbody>
-	</table>
-</aside>
+				<tr>
+					<td colspan="2">Total</td>
+					<td class="currency">${(total / 100).toFixed(2)}</td>
+				</tr>
+			</tbody>
+		</table>
+	</aside>
+</div>
 
 <style>
 	.container {
 		display: flex;
+		justify-content: center;
+		margin-bottom: 2rem;
+        margin-top: 1rem;
+	}
+
+	.currency {
+		text-align: end;
+	}
+
+	aside {
+		display: flex;
 		flex-direction: column;
-		justify-content: flex-end;
 		flex-wrap: wrap;
 		gap: 1.25rem;
 		right: 1.5rem;
@@ -41,15 +53,9 @@
 		margin-top: 1rem;
 	}
 
-    .currency {
-		text-align: end;
-	}
-
 	h2 {
 		font-weight: 700;
 		font-size: 1.5rem;
-		margin-bottom: 0.25rem;
-		margin-top: 0.25rem;
 	}
 
 	table {
@@ -65,14 +71,8 @@
 		padding: 0.5rem;
 	}
 
-	@media (min-width: 640px) {
-		.container {
-			justify-content: center;
-			gap: 0.5rem;
-		}
-	}
-	@media (min-width: 1280px) {
-		.container {
+	@media (min-width: 1560px) {
+		aside {
 			position: fixed;
 		}
 	}

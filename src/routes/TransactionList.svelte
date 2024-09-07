@@ -39,6 +39,7 @@
 		justify-content: start;
 		flex-wrap: wrap;
 		gap: 1.25rem;
+        margin-bottom: 2rem;
 	}
 
 	table {

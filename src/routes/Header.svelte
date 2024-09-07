@@ -13,10 +13,10 @@
 <style>
 	.container {
 		display: flex;
+        position: sticky;
 		flex-direction: column;
 		/* align-items: center; */
 		top: 0px;
-		position: fixed;
 		width: 100%;
 		z-index: 20;
 		background-color: #264653;
