@@ -16,10 +16,12 @@
 	let description;
 	let monthly = false;
 	let amount;
+
+    export let open = false;
 </script>
 
 <div class="container">
-	<aside>
+	<aside class:open>
 		<form method="POST" action="?/create" class="card-shadow" use:enhance>
 			<h2>Add Transaction</h2>
 			<label for="date"
@@ -65,9 +67,15 @@
 		margin-left: 1.5rem;
 	}
 
+    .open {
+        left: 0;
+    }
+
 	aside {
 		width: 26rem;
 		font-size: 1.125rem;
+        left: -100%;
+        transition: left 0.3s ease-in-out;
 	}
 
 	form {
