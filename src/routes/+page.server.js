@@ -41,7 +41,7 @@ export async function load(event) {
 
     // Add running totals to each transaction
     transactions.sort((a, b) => new Date(a.date) - new Date(b.date));
-    recurringTransactions.sort((a, b) => new Date(a.date) - new Date(b.date)); /** @TODO Sort using day instead of month */
+    recurringTransactions.sort((a, b) => new Date(a.date).getDate() - new Date(b.date).getDate());
     let runningTotal = 0;
     for (let transaction of transactions) {
         let amount = parseInt(transaction.amount);
