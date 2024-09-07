@@ -16,7 +16,7 @@
 <tr>
 	<td>{tranDate.getDate()}</td>
 	<td>{transaction.description}</td>
-	<td class="currency {transaction.type === 'deposit' ? 'deposit' : 'withdrawal'}">${amount}</td>
+	<td class="currency {(transaction.type === 'deposit') ? 'deposit' : ''}">${amount}</td>
 	<td>
 		<button>X</button>
 	</td>
@@ -34,10 +34,6 @@
 
 	.deposit {
 		color: #18d15c;
-	}
-
-	.withdrawal {
-		color: #f72c2c;
 	}
 
 	button {

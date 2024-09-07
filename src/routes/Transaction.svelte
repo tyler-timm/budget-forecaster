@@ -23,7 +23,7 @@
 	<td class="mobile-hide">{recurring}</td>
 	<td>{transaction.description}</td>
 	<td class="mobile-hide">{transactionType}</td>
-	<td class="currency {transaction.type === 'deposit' ? 'deposit' : 'withdrawal'}">${amount}</td>
+	<td class="currency {transaction.type === 'deposit' ? 'deposit' : ''}">${amount}</td>
 	<td class="mobile-hide currency">${runningTotal}</td>
 	<td>
 		<!-- Call delete function in +page.server.js -->
@@ -63,10 +63,6 @@
 
 	.deposit {
 		color: #18d15c;
-	}
-
-	.withdrawal {
-		color: #f72c2c;
 	}
 
 	@media (min-width: 640px) {
