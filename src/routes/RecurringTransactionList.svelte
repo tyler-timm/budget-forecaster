@@ -1,12 +1,16 @@
 <script>
 	import MinimalTransaction from './MinimalTransaction.svelte';
 	export let data;
+	let open = true;
 	$: transactions = data.recurringTransactions;
 	$: total = data.recurringTotal;
 </script>
 
 <div class="container">
-	<aside class="inner-container card-shadow">
+	<button on:click={() => (open = !open)}>
+		Show/Hide
+	</button>
+	<aside class="card-shadow" class:open>
 		<h2>Recurring Transactions</h2>
 		<table>
 			<tbody>
@@ -34,23 +38,26 @@
 		display: flex;
 		justify-content: center;
 		margin-bottom: 2rem;
-        margin-top: 1rem;
 	}
 
 	.currency {
 		text-align: end;
 	}
 
+	.open {
+		right: 1rem;
+	}
+
 	aside {
 		display: flex;
 		flex-direction: column;
 		flex-wrap: wrap;
-		gap: 1.25rem;
-		right: 1.5rem;
+		right: -100%;
+		transition: right 0.3s ease-in-out;
 		border-radius: 1rem;
 		padding: 1rem;
 		background-color: white;
-		margin-top: 1rem;
+		margin-top: 3rem;
 	}
 
 	h2 {
@@ -71,9 +78,28 @@
 		padding: 0.5rem;
 	}
 
+	button {
+		position: fixed;
+        right: 1rem;
+		background-color: lightgrey;
+		color: white;
+		padding: 0.25rem 0.5rem;
+		border-radius: 0.25rem;
+		border-color: transparent;
+        display: none;
+	}
+
+	button:hover {
+		background-color: grey;
+	}
+
 	@media (min-width: 1560px) {
 		aside {
 			position: fixed;
 		}
+
+        button {
+            display: block;
+        }
 	}
 </style>
