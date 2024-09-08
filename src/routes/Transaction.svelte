@@ -1,5 +1,6 @@
 <script>
-    import { enhance } from '$app/forms';
+	import Icon from '@iconify/svelte';
+	import { enhance } from '$app/forms';
 	export let transaction;
 
 	let transactionType = transaction.type;
@@ -30,8 +31,11 @@
 		<form method="POST" action="?/delete" use:enhance>
 			<input type="hidden" name="id" value={transaction.id} />
 			<input type="hidden" name="transactionsData" />
-			<button>X</button>
+			<button><Icon icon="ri:delete-bin-line" /></button>
 		</form>
+	</td>
+	<td>
+		<Icon icon="ri:edit-2-line" />
 	</td>
 </tr>
 
@@ -42,15 +46,15 @@
 	}
 
 	button {
-		border: 1px solid black;
+		border: transparent;
 		background-color: transparent;
 		border-radius: 0.25rem;
 		font-size: 1rem;
-        padding: 0 .5rem;
 	}
 
 	button:hover {
 		background-color: #7f1d1d;
+        color: white;
 	}
 
 	.mobile-hide {
