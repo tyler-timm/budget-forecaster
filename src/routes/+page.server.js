@@ -1,4 +1,4 @@
-import { getTransactions, addTransaction, deleteTransaction } from '$lib/db';
+import { getTransactions, addTransaction, deleteTransaction, editTransaction } from '$lib/db';
 import { fail, redirect } from '@sveltejs/kit';
 import { lucia } from "$lib/server/auth";
 
@@ -87,6 +87,26 @@ export const actions = {
         console.log('add transaction response', response);
 
         return { success: true }
+    },
+
+    edit: async ({ request }) => {
+        const formData = await request.formData();
+        console.log('formData', formData);
+        let amount = formData.get('amount');
+        amount = amount * 100;
+
+        const newTransactionData = {
+            id: formData.get('id'),
+            date: formData.get('date'),
+            type: formData.get('type'),
+            description: formData.get('description'),
+            recurring: formData.get('recurring'),
+            amount: amount
+        }
+        console.log('newTransactionData', newTransactionData);
+        const response = await editTransaction(newTransactionData);
+        console.log('edit transaction response', response);
+        return response;
     },
 
     delete: async ({ request }) => {

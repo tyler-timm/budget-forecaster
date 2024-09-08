@@ -36,6 +36,26 @@ export async function addTransaction(transaction) {
     return JSON.stringify(result);
 }
 
+export async function editTransaction(transaction) {
+    console.log('edit transaction data', transaction);
+    
+    let result;
+    try {
+        result = await sql`update transaction
+        set
+        description = ${transaction.description},
+        type = ${transaction.type},
+        amount = ${transaction.amount},
+        date = ${transaction.date},
+        recurring = ${transaction.recurring}
+        where id = ${transaction.id}`;
+        console.log('edit result', result);
+    } catch (e) {
+        console.log('edit error', e);
+    }
+    return JSON.stringify(result);
+}
+
 // TODO editTransaction(id) - update transaction
 
 export async function createUser(id, username, password_hash) {

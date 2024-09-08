@@ -1,6 +1,7 @@
 <script>
 	import Icon from '@iconify/svelte';
 	import { enhance } from '$app/forms';
+	import invalidateAll from '$app/navigation';
 	export let transaction;
 	let edit = false;
 
@@ -8,7 +9,6 @@
 	transactionType = transactionType.charAt(0).toUpperCase() + transactionType.slice(1);
 
 	const transactionDate = new Date(transaction.date);
-
 	let recurring = transaction.recurring ? 'Yes' : 'No';
 
 	let amount = transaction.amount / 100;
@@ -29,7 +29,12 @@
 			name: 'Withdrawal'
 		}
 	];
-	let selectedTransactionType;
+
+	let newTransactionDateString = transactionDate.toLocaleDateString();
+	let newRecurring = recurring;
+	let newDescription = transaction.description;
+	let newSelectedTransactionType = transaction.type;
+	let newAmount = amount;
 </script>
 
 <tr>
@@ -42,25 +47,28 @@
 		<td class="mobile-hide currency">${runningTotal}</td>
 	{:else}
 		<td>
-			<input type="date" name="date" value={transactionDate.toLocaleDateString()} />
+			<input type="date" name="date" bind:value={newTransactionDateString} />
 		</td>
 		<td>
-			<input type="checkbox" name="recurring" checked={recurring === 'Yes'} />
+			<input type="checkbox" name="recurring" bind:checked={newRecurring} />
 		</td>
 		<td>
-			<input type="text" name="description" value={transaction.description} />
+			<input type="text" name="description" bind:value={newDescription} />
 		</td>
 		<td>
-			<select name="type" id="type" bind:value={selectedTransactionType}>
+			<select name="type" id="type" bind:value={newSelectedTransactionType}>
 				{#each transactionTypes as transactionType}
-					<option value={transactionType.id}>
+					<option
+						value={transactionType.id}
+						selected={transactionType.id === newSelectedTransactionType}
+					>
 						{transactionType.name}
 					</option>
 				{/each}
 			</select>
 		</td>
 		<td>
-			<input type="text" name="amount" value={amount} />
+			<input type="text" name="amount" bind:value={newAmount} />
 		</td>
 		<td class="mobile-hide currency">${runningTotal}</td>
 	{/if}
@@ -69,13 +77,33 @@
 		<form method="POST" action="?/delete" use:enhance>
 			<input type="hidden" name="id" value={transaction.id} />
 			<input type="hidden" name="transactionsData" />
-			<button class="delete" n><Icon icon="ri:delete-bin-line" /></button>
+			<button class="delete"><Icon icon="ri:delete-bin-line" /></button>
 		</form>
 	</td>
 	<td>
 		<button class="edit" on:click={() => (edit = !edit)}>
 			<Icon icon="ri:edit-2-line" />
 		</button>
+	</td>
+	<td>
+		{#if edit}
+			<!-- Call edit function in +page.server.js -->
+			<form method="POST" action="?/edit" use:enhance>
+				<input type="hidden" name="id" value={transaction.id} />
+				<input type="hidden" name="date" value={newTransactionDateString} />
+				<input type="hidden" name="recurring" value={newRecurring} />
+				<input type="hidden" name="description" value={newDescription} />
+				<input type="hidden" name="type" value={newSelectedTransactionType} />
+				<input type="hidden" name="amount" value={newAmount} />
+				<button
+					class="submit-edit"
+					on:click={() => {
+						edit = !edit;
+						invalidateAll();
+					}}><Icon icon="ri:checkbox-circle-line" /></button
+				>
+			</form>
+		{/if}
 	</td>
 </tr>
 
@@ -99,6 +127,11 @@
 
 	.edit:hover {
 		background-color: blue;
+		color: white;
+	}
+
+	.submit-edit:hover {
+		background-color: green;
 		color: white;
 	}
 

@@ -143,7 +143,7 @@
 		color: white;
 		padding: 0.25rem 0.5rem;
 		border-color: transparent;
-        display: none;
+		display: none;
 	}
 
 	.show-hide:hover {
@@ -160,9 +160,9 @@
 			position: fixed;
 		}
 
-        .show-hide {
-            display: block;
-            position: fixed;
-        }
+		.show-hide {
+			display: block;
+			position: fixed;
+		}
 	}
 </style>
