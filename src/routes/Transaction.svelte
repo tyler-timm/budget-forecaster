@@ -1,7 +1,7 @@
 <script>
 	import Icon from '@iconify/svelte';
 	import { enhance } from '$app/forms';
-	import invalidateAll from '$app/navigation';
+	// import invalidateAll from '$app/navigation';
 	export let transaction;
 	let edit = false;
 
@@ -99,7 +99,6 @@
 					class="submit-edit"
 					on:click={() => {
 						edit = !edit;
-						invalidateAll();
 					}}><Icon icon="ri:checkbox-circle-line" /></button
 				>
 			</form>
