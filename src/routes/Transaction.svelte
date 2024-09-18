@@ -1,9 +1,12 @@
 <script>
 	import Icon from '@iconify/svelte';
 	import { enhance } from '$app/forms';
+	import EditTransactionModal from './EditTransactionModal.svelte';
 	// import invalidateAll from '$app/navigation';
 	export let transaction;
+
 	let edit = false;
+	let showModal = false;
 
 	let transactionType = transaction.type;
 	transactionType = transactionType.charAt(0).toUpperCase() + transactionType.slice(1);
@@ -38,40 +41,12 @@
 </script>
 
 <tr>
-	{#if !edit}
-		<td>{transactionDate.toLocaleDateString()}</td>
-		<td class="mobile-hide">{recurring}</td>
-		<td>{transaction.description}</td>
-		<td class="mobile-hide">{transactionType}</td>
-		<td class="currency {transaction.type === 'deposit' ? 'deposit' : ''}">${amount}</td>
-		<td class="mobile-hide currency">${runningTotal}</td>
-	{:else}
-		<td>
-			<input type="date" name="date" bind:value={newTransactionDateString} />
-		</td>
-		<td>
-			<input type="checkbox" name="recurring" bind:checked={newRecurring} />
-		</td>
-		<td>
-			<input type="text" name="description" bind:value={newDescription} />
-		</td>
-		<td>
-			<select name="type" id="type" bind:value={newSelectedTransactionType}>
-				{#each transactionTypes as transactionType}
-					<option
-						value={transactionType.id}
-						selected={transactionType.id === newSelectedTransactionType}
-					>
-						{transactionType.name}
-					</option>
-				{/each}
-			</select>
-		</td>
-		<td>
-			<input type="text" name="amount" bind:value={newAmount} />
-		</td>
-		<td class="mobile-hide currency">${runningTotal}</td>
-	{/if}
+	<td>{transactionDate.toLocaleDateString()}</td>
+	<td class="mobile-hide">{recurring}</td>
+	<td>{transaction.description}</td>
+	<td class="mobile-hide">{transactionType}</td>
+	<td class="currency {transaction.type === 'deposit' ? 'deposit' : ''}">${amount}</td>
+	<td class="mobile-hide currency">${runningTotal}</td>
 	<td>
 		<!-- Call delete function in +page.server.js -->
 		<form method="POST" action="?/delete" use:enhance>
@@ -81,30 +56,13 @@
 		</form>
 	</td>
 	<td>
-		<button class="edit" on:click={() => (edit = !edit)}>
+		<button class="edit" on:click={() => (showModal = !showModal)}>
 			<Icon icon="ri:edit-2-line" />
 		</button>
 	</td>
-	<td>
-		{#if edit}
-			<!-- Call edit function in +page.server.js -->
-			<form method="POST" action="?/edit" use:enhance>
-				<input type="hidden" name="id" value={transaction.id} />
-				<input type="hidden" name="date" value={newTransactionDateString} />
-				<input type="hidden" name="recurring" value={newRecurring} />
-				<input type="hidden" name="description" value={newDescription} />
-				<input type="hidden" name="type" value={newSelectedTransactionType} />
-				<input type="hidden" name="amount" value={newAmount} />
-				<button
-					class="submit-edit"
-					on:click={() => {
-						edit = !edit;
-					}}><Icon icon="ri:checkbox-circle-line" /></button
-				>
-			</form>
-		{/if}
-	</td>
 </tr>
+
+<EditTransactionModal {showModal} />
 
 <style>
 	td {
