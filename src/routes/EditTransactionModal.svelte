@@ -1,6 +1,6 @@
 <script>
 	import { enhance } from '$app/forms';
-	export let showModal; // boolean
+    import { showModal } from '../stores';
 
 	let dialog; // HTMLDialogElement
 	$: if (dialog && showModal) dialog.showModal();
@@ -26,7 +26,7 @@
 <div class="container">
 	<dialog
 		bind:this={dialog}
-		on:close={() => (showModal = false)}
+		on:close={() => (showModal.update(show => false))}
 		on:click|self={() => dialog.close()}
 	>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->

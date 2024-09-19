@@ -1,12 +1,8 @@
 <script>
 	import Icon from '@iconify/svelte';
 	import { enhance } from '$app/forms';
-	import EditTransactionModal from './EditTransactionModal.svelte';
-	// import invalidateAll from '$app/navigation';
+    import { showModal } from '../stores';
 	export let transaction;
-
-	let edit = false;
-	let showModal = false;
 
 	let transactionType = transaction.type;
 	transactionType = transactionType.charAt(0).toUpperCase() + transactionType.slice(1);
@@ -22,22 +18,9 @@
 
 	let runningTotal = (transaction.runningTotal / 100).toFixed(2);
 
-	let transactionTypes = [
-		{
-			id: 'deposit',
-			name: 'Deposit'
-		},
-		{
-			id: 'withdrawal',
-			name: 'Withdrawal'
-		}
-	];
-
-	let newTransactionDateString = transactionDate.toLocaleDateString();
-	let newRecurring = recurring;
-	let newDescription = transaction.description;
-	let newSelectedTransactionType = transaction.type;
-	let newAmount = amount;
+    function toggleModal() {
+        showModal.update(show => !show)
+    }
 </script>
 
 <tr>
@@ -56,13 +39,11 @@
 		</form>
 	</td>
 	<td>
-		<button class="edit" on:click={() => (showModal = !showModal)}>
+		<button class="edit" on:click={toggleModal}>
 			<Icon icon="ri:edit-2-line" />
 		</button>
 	</td>
 </tr>
-
-<EditTransactionModal {showModal} />
 
 <style>
 	td {
@@ -84,11 +65,6 @@
 
 	.edit:hover {
 		background-color: blue;
-		color: white;
-	}
-
-	.submit-edit:hover {
-		background-color: green;
 		color: white;
 	}
 
