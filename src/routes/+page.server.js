@@ -17,7 +17,7 @@ export async function load(event) {
         if (tran.type === 'withdrawal') {
             amount = amount * -1;
         }
-        tran.amount = amount;
+        // tran.amount = amount;
 
         let localDate = tran.date.replace('Z', '');
         let transactionDate = new Date(localDate);
@@ -32,6 +32,11 @@ export async function load(event) {
     console.log('startDate', startDate);
     for (let tran of transactions) {
         if (tran.recurring) {
+            let amount = parseInt(tran.amount);
+            if (tran.type === 'withdrawal') {
+                amount = amount * -1;
+            }
+
             // Set first recurrence date after start date
             const startMonth = startDate.getMonth();
             const startDay = startDate.getDate();
@@ -47,10 +52,10 @@ export async function load(event) {
                 newTran.date = new Date(tran.date).setMonth(tran.date.getMonth() + i);
                 newTran.clientId = `${tran.id}-${i}`;
                 transactions = [...transactions, newTran];
-                total = total + tran.amount;
+                total = total + amount;
             }
             recurringTransactions.push(tran)
-            recurringTotal = recurringTotal + tran.amount;
+            recurringTotal = recurringTotal + amount;
         }
         console.log('date', tran.date);
     }
