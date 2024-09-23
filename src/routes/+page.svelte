@@ -12,7 +12,7 @@
 	<TransactionList {data} />
 	<RecurringTransactionList {data} />
 
-    <EditTransactionModal />
+    <!-- <EditTransactionModal /> -->
 </div>
 
 <style>
