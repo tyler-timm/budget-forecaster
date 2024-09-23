@@ -6,10 +6,8 @@
 	$: total = data.recurringTotal;
 </script>
 
-<div class="container">
-	<button on:click={() => (open = !open)}>
-		Show/Hide
-	</button>
+<div class="container mobile-hide">
+	<button on:click={() => (open = !open)}> Show/Hide </button>
 	<aside class="card-shadow" class:open>
 		<h2>Recurring Transactions</h2>
 		<table>
@@ -40,12 +38,22 @@
 		margin-bottom: 2rem;
 	}
 
+	.mobile-hide {
+		display: none;
+	}
+
 	.currency {
 		text-align: end;
 	}
 
 	.open {
 		right: 1rem;
+	}
+
+	@media (min-width: 1560px) {
+		.mobile-hide {
+			display: block;
+		}
 	}
 
 	aside {
@@ -80,13 +88,13 @@
 
 	button {
 		position: fixed;
-        right: 1rem;
+		right: 1rem;
 		background-color: lightgrey;
 		color: white;
 		padding: 0.25rem 0.5rem;
 		border-radius: 0.25rem;
 		border-color: transparent;
-        display: none;
+		display: none;
 	}
 
 	button:hover {
@@ -98,8 +106,8 @@
 			position: fixed;
 		}
 
-        button {
-            display: block;
-        }
+		button {
+			display: block;
+		}
 	}
 </style>
