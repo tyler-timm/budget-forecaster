@@ -12,7 +12,7 @@
 		}
 	];
 
-	let selectedTransactionType = 'deposit';
+	let selectedTransactionType = 'withdrawal';
 	let description;
 	let monthly = false;
 	let amount;
