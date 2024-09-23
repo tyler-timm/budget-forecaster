@@ -29,16 +29,30 @@ export async function addTransaction(transaction) {
         throw new Error('amount must be greater than 0');
     }
     const result = await sql`insert into transaction
-    (description, type, amount, date, recurring)
+    (
+        description, 
+        type, 
+        amount, 
+        date, 
+        new_starting_balance, 
+        recurring
+    )
     values
-    (${transaction.description}, ${transaction.type}, ${transaction.amount}, ${transaction.date}, ${transaction.recurring})`;
+    (
+        ${transaction.description}, 
+        ${transaction.type}, 
+        ${transaction.amount}, 
+        ${transaction.date}, 
+        ${transaction.newStartingBalance}, 
+        ${transaction.recurring}
+    )`;
     console.log('create result', result);
     return JSON.stringify(result);
 }
 
 export async function editTransaction(transaction) {
     console.log('edit transaction data', transaction);
-    
+
     let result;
     try {
         result = await sql`update transaction

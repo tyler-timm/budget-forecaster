@@ -16,6 +16,7 @@
 	let description;
 	let monthly = false;
 	let amount;
+    let newStartingBalance = false;
 
 	let open = true;
 </script>
@@ -43,6 +44,15 @@
 				<label for="description"
 					>Description:
 					<input type="text" name="description" id="description" bind:value={description} />
+				</label>
+				<label for="recurring-monthly"
+					>New Starting Balance:
+					<input
+						type="checkbox"
+						name="new-starting-balance"
+						id="new-starting-balance"
+						bind:checked={newStartingBalance}
+					/>
 				</label>
 				<label for="recurring-monthly"
 					>Monthly:

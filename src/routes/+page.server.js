@@ -67,6 +67,12 @@ export const actions = {
         amount = amount * 100;
         amount = parseInt(amount);
 
+        let startingBalance = formData.get('new-starting-balance');
+        let newStartingBalance = false;
+        if (startingBalance === 'on') {
+            newStartingBalance = true;
+        }
+
         let recurringMonthly = formData.get('recurring-monthly');
         let recurring = false;
         if (recurringMonthly === 'on') {
@@ -79,6 +85,7 @@ export const actions = {
             date: date ? new Date(`${date}T00:00:00.000`) : new Date(),
             type: formData.get('type'),
             description: formData.get('description'),
+            newStartingBalance: newStartingBalance,
             recurring: recurring,
             amount: amount
         }
