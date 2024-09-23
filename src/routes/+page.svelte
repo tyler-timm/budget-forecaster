@@ -2,6 +2,7 @@
 	import AddTransaction from './AddTransaction.svelte';
 	import TransactionList from './TransactionList.svelte';
 	import RecurringTransactionList from './RecurringTransactionList.svelte';
+    import EditTransactionModal from './EditTransactionModal.svelte';
 
 	export let data;
 </script>
@@ -10,6 +11,8 @@
 	<AddTransaction />
 	<TransactionList {data} />
 	<RecurringTransactionList {data} />
+
+    <EditTransactionModal />
 </div>
 
 <style>
