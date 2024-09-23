@@ -16,14 +16,14 @@
 	let description;
 	let monthly = false;
 	let amount;
-    let newStartingBalance = false;
+	let newStartingBalance = false;
 
 	let open = true;
 </script>
 
 <div class="container">
 	<div class="inner-container">
-		<button on:click={() => (open = !open)} class="show-hide"> Show/Hide </button>
+		<button on:click={() => (open = !open)} class="show-hide">Show/Hide</button>
 		<aside class:open>
 			<form method="POST" action="?/create" class="card-shadow" use:enhance>
 				<h2>Add Transaction</h2>

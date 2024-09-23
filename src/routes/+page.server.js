@@ -33,6 +33,7 @@ export async function load(event) {
     for (let tran of transactions) {
         if (tran.recurring) {
             let amount = parseInt(tran.amount);
+            let recurringAmount = amount;
             if (tran.type === 'withdrawal') {
                 amount = amount * -1;
             }
@@ -55,7 +56,7 @@ export async function load(event) {
                 total = total + amount;
             }
             recurringTransactions.push(tran)
-            recurringTotal = recurringTotal + amount;
+            recurringTotal = recurringTotal + recurringAmount;
         }
         console.log('date', tran.date);
     }

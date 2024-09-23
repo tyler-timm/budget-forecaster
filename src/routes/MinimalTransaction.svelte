@@ -7,9 +7,9 @@
 	let tranDate = new Date(transaction.date);
 
 	let amount = transaction.amount / 100;
-	if (transaction.type === 'withdrawal') {
-		amount = amount * -1;
-	}
+	// if (transaction.type === 'withdrawal') {
+	// 	amount = amount * -1;
+	// }
 	amount = amount.toFixed(2);
 </script>
 
