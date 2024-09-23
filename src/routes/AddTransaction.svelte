@@ -1,6 +1,4 @@
 <script>
-	import { enhance } from '$app/forms';
-
 	let transactionTypes = [
 		{
 			id: 'deposit',
@@ -25,7 +23,7 @@
 	<div class="inner-container">
 		<button on:click={() => (open = !open)} class="show-hide">Show/Hide</button>
 		<aside class:open>
-			<form method="POST" action="?/create" class="card-shadow" use:enhance>
+			<form method="POST" action="?/create" class="card-shadow">
 				<h2>Add Transaction</h2>
 				<label for="date"
 					>Date:

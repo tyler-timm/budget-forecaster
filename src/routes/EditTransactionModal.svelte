@@ -1,5 +1,4 @@
 <script>
-	import { enhance } from '$app/forms';
     import { showModal } from '../stores';
 
 	let dialog; // HTMLDialogElement
@@ -30,7 +29,7 @@
 		on:click|self={() => dialog.close()}
 	>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
-		<form method="POST" action="?/edit" class="card-shadow" use:enhance>
+		<form method="POST" action="?/edit" class="card-shadow">
 			<h2>Edit Transaction</h2>
 			<label for="date"
 				>Date:

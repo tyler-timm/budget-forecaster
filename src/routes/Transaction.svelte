@@ -1,6 +1,5 @@
 <script>
 	import Icon from '@iconify/svelte';
-	import { enhance } from '$app/forms';
     import { showModal } from '../stores';
 	export let transaction;
 
@@ -32,7 +31,7 @@
 	<td class="mobile-hide currency">${runningTotal}</td>
 	<td>
 		<!-- Call delete function in +page.server.js -->
-		<form method="POST" action="?/delete" use:enhance>
+		<form method="POST" action="?/delete">
 			<input type="hidden" name="id" value={transaction.id} />
 			<input type="hidden" name="transactionsData" />
 			<button class="delete"><Icon icon="ri:delete-bin-line" /></button>
