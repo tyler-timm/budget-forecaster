@@ -29,7 +29,6 @@ export async function load(event) {
 
     let recurringTransactions = [];
     const startDate = getStartDate(transactions);
-    console.log('startDate', startDate);
     for (let tran of transactions) {
         if (tran.recurring) {
             let amount = parseInt(tran.amount);
@@ -58,7 +57,6 @@ export async function load(event) {
             recurringTransactions.push(tran)
             recurringTotal = recurringTotal + recurringAmount;
         }
-        console.log('date', tran.date);
     }
 
     // Sort transactions by date
@@ -70,7 +68,6 @@ export async function load(event) {
         if (typeof date !== 'number') {
             date = date.getTime();
         }
-        console.log('date', date);
         return date >= startDate.getTime();
     })
 
