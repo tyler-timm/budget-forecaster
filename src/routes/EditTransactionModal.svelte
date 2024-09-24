@@ -5,13 +5,13 @@
 	$: if (dialog && showModal) dialog.showModal();
 
 	let transactionTypes = [
+        {
+            id: 'withdrawal',
+            name: 'Withdrawal'
+        },
 		{
 			id: 'deposit',
 			name: 'Deposit'
-		},
-		{
-			id: 'withdrawal',
-			name: 'Withdrawal'
 		}
 	];
 
