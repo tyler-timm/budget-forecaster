@@ -1,7 +1,6 @@
 <script>
 	import AddTransaction from './AddTransaction.svelte';
 	import TransactionList from './TransactionList.svelte';
-	import RecurringTransactionList from './RecurringTransactionList.svelte';
 
 	export let data;
 </script>
@@ -9,7 +8,6 @@
 <div class="container">
 	<AddTransaction />
 	<TransactionList {data} />
-	<RecurringTransactionList {data} />
 </div>
 
 <style>
@@ -20,7 +18,7 @@
 	@media (min-width: 1560px) {
 		.container {
 			flex-direction: row;
-			justify-content: space-between;
+			justify-content: center;
 		}
 	}
 </style>

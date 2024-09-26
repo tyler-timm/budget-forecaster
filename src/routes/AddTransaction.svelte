@@ -19,10 +19,10 @@
 	let open = true;
 </script>
 
+<button on:click={() => (open = !open)} class="show-hide">Show/Hide</button>
 <div class="container">
-	<div class="inner-container">
-		<button on:click={() => (open = !open)} class="show-hide">Show/Hide</button>
-		<aside class:open>
+    <div class="inner-container">
+        <aside class:open>
 			<form method="POST" action="?/create" class="card-shadow">
 				<h2>Add Transaction</h2>
 				<label for="date"
@@ -171,6 +171,7 @@
 		.show-hide {
 			display: block;
 			position: fixed;
+            left: 1rem;
 		}
 	}
 </style>
