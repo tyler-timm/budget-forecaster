@@ -93,12 +93,7 @@
 				<input type="hidden" name="description" value={newDescription} />
 				<input type="hidden" name="type" value={newSelectedTransactionType} />
 				<input type="hidden" name="amount" value={newAmount} />
-				<button
-					class="submit-edit"
-					on:click={() => {
-						edit = !edit;
-					}}><Icon icon="ri:checkbox-circle-line" /></button
-				>
+				<button class="submit-edit"><Icon icon="ri:checkbox-circle-line" /></button>
 			</form>
 		{/if}
 	</td>
@@ -127,7 +122,7 @@
 		color: white;
 	}
 
-    .submit-edit:hover {
+	.submit-edit:hover {
 		background-color: green;
 		color: white;
 	}
