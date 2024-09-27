@@ -45,13 +45,13 @@
 		<td class="mobile-hide currency">${runningTotal}</td>
 	{:else}
 		<td>
-			<input type="date" name="date" bind:value={newTransactionDateString} />
+			<input type="date" name="date" class="date-input" width="50px" bind:value={newTransactionDateString} />
 		</td>
 		<td>
 			<input type="checkbox" name="recurring" bind:checked={newRecurring} />
 		</td>
 		<td>
-			<input type="text" name="description" bind:value={newDescription} />
+			<input type="text" name="description" size="18" bind:value={newDescription} />
 		</td>
 		<td>
 			<select name="type" id="type" bind:value={newSelectedTransactionType}>
@@ -66,7 +66,7 @@
 			</select>
 		</td>
 		<td>
-			<input type="text" name="amount" bind:value={newAmount} />
+			<input type="text" name="amount" size="5" bind:value={newAmount} />
 		</td>
 		<td class="mobile-hide currency">${runningTotal}</td>
 	{/if}
@@ -138,6 +138,10 @@
 	.deposit {
 		color: #18d15c;
 	}
+
+    .date-input {
+        width: 90px;
+    }
 
 	@media (min-width: 640px) {
 		.mobile-hide {
