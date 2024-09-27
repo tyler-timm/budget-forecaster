@@ -1,9 +1,9 @@
 <script>
 	let transactionTypes = [
-        {
-            id: 'withdrawal',
-            name: 'Withdrawal'
-        },
+		{
+			id: 'withdrawal',
+			name: 'Withdrawal'
+		},
 		{
 			id: 'deposit',
 			name: 'Deposit'
@@ -16,13 +16,13 @@
 	let amount;
 	let newStartingBalance = false;
 
-	let open = true;
+	let open = false;
 </script>
 
-<button on:click={() => (open = !open)} class="show-hide">Show/Hide</button>
+<button on:click={() => (open = !open)} class="show-hide">New Transaction</button>
 <div class="container">
-    <div class="inner-container">
-        <aside class:open>
+	<div class="inner-container">
+		<aside class:open>
 			<form method="POST" action="?/create" class="card-shadow">
 				<h2>Add Transaction</h2>
 				<label for="date"
@@ -94,6 +94,7 @@
 		left: -100%;
 		transition: left 0.3s ease-in-out;
 		margin-top: 2rem;
+        position: fixed;
 	}
 
 	form {
@@ -147,15 +148,14 @@
 	}
 
 	.show-hide {
-		background-color: lightgrey;
-		color: white;
-		padding: 0.25rem 0.5rem;
-		border-color: transparent;
-		display: none;
+        background-color: #264653;
+		display: block;
+		position: fixed;
+		left: 1rem;
 	}
 
 	.show-hide:hover {
-		background-color: grey;
+		background-color: #264653bd;
 	}
 
 	input[type='checkbox'] {
@@ -163,15 +163,4 @@
 		height: 1.5rem;
 	}
 
-	@media (min-width: 1560px) {
-		aside {
-			position: fixed;
-		}
-
-		.show-hide {
-			display: block;
-			position: fixed;
-            left: 1rem;
-		}
-	}
 </style>
