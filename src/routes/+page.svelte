@@ -16,7 +16,6 @@
 	}
 	@media (min-width: 1300px) {
 		.container {
-			display: grid;
 			grid-template-columns: auto 1fr;
 		}
 	}
