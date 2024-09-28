@@ -16,85 +16,75 @@
 	let amount;
 	let newStartingBalance = false;
 
-	let open = false;
+	let open = true;
 </script>
 
-<button on:click={() => (open = !open)} class="show-hide">New Transaction</button>
 <div class="container">
-	<div class="inner-container">
-		<aside class:open>
-			<form method="POST" action="?/create" class="card-shadow">
-				<h2>Add Transaction</h2>
-				<label for="date"
-					>Date:
-					<input type="date" name="date" id="date" />
-				</label>
-				<label for="type"
-					>Type:
-					<select name="type" id="type" bind:value={selectedTransactionType}>
-						{#each transactionTypes as transactionType}
-							<option value={transactionType.id}>
-								{transactionType.name}
-							</option>
-						{/each}
-					</select>
-				</label>
-				<label for="description"
-					>Description:
-					<input type="text" name="description" id="description" bind:value={description} />
-				</label>
-				<label for="recurring-monthly"
-					>New Starting Balance:
-					<input
-						type="checkbox"
-						name="new-starting-balance"
-						id="new-starting-balance"
-						bind:checked={newStartingBalance}
-					/>
-				</label>
-				<label for="recurring-monthly"
-					>Monthly:
-					<input
-						type="checkbox"
-						name="recurring-monthly"
-						id="recurring-monthly"
-						bind:checked={monthly}
-					/>
-				</label>
-				<label for="amount"
-					>Amount:
-					<input type="text" name="amount" id="amount" placeholder="$0.00" bind:value={amount} />
-				</label>
+	<aside class:open>
+		<form method="POST" action="?/create" class="card-shadow">
+			<h2>Add Transaction</h2>
+			<label for="date"
+				>Date:
+				<input type="date" name="date" id="date" />
+			</label>
+			<label for="type"
+				>Type:
+				<select name="type" id="type" bind:value={selectedTransactionType}>
+					{#each transactionTypes as transactionType}
+						<option value={transactionType.id}>
+							{transactionType.name}
+						</option>
+					{/each}
+				</select>
+			</label>
+			<label for="description"
+				>Description:
+				<input type="text" name="description" id="description" bind:value={description} />
+			</label>
+			<label for="recurring-monthly"
+				>New Starting Balance:
+				<input
+					type="checkbox"
+					name="new-starting-balance"
+					id="new-starting-balance"
+					bind:checked={newStartingBalance}
+				/>
+			</label>
+			<label for="recurring-monthly"
+				>Monthly:
+				<input
+					type="checkbox"
+					name="recurring-monthly"
+					id="recurring-monthly"
+					bind:checked={monthly}
+				/>
+			</label>
+			<label for="amount"
+				>Amount:
+				<input type="text" name="amount" id="amount" placeholder="$0.00" bind:value={amount} />
+			</label>
 
-				<button type="submit" class="submit-button">Submit</button>
-			</form>
-		</aside>
-	</div>
+			<button type="submit" class="submit-button">Submit</button>
+		</form>
+	</aside>
+    <!-- <button on:click={() => (open = !open)} class="show-hide">New Transaction</button> -->
 </div>
 
 <style>
 	.container {
-		display: flex;
-		justify-content: center;
-		margin-bottom: 2rem;
-	}
-
-	.inner-container {
-		display: flex;
-		flex-direction: column;
-		align-items: start;
+		margin: 1rem;
 	}
 
 	.open {
-		left: 1rem;
+		left: 0;
 	}
 
 	aside {
 		font-size: 1.125rem;
 		left: -100%;
 		transition: left 0.3s ease-in-out;
-		margin-top: 2rem;
-        position: fixed;
+		position: relative;
+        margin-bottom: 2rem;
 	}
 
 	form {
@@ -108,7 +98,7 @@
 		border-radius: 1rem;
 		padding: 1rem;
 		background-color: white;
-		margin-top: 1rem;
+        width: fit-content
 	}
 
 	h2 {
@@ -148,10 +138,9 @@
 	}
 
 	.show-hide {
-        background-color: #264653;
+		background-color: #264653;
 		display: block;
 		position: fixed;
-		left: 1rem;
 	}
 
 	.show-hide:hover {
@@ -162,5 +151,4 @@
 		width: 1.5rem;
 		height: 1.5rem;
 	}
-
 </style>

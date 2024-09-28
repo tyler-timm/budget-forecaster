@@ -12,13 +12,12 @@
 
 <style>
 	.container {
-		display: flex;
-		flex-direction: column;
+		display: grid;
 	}
-	@media (min-width: 1560px) {
+	@media (min-width: 1300px) {
 		.container {
-			flex-direction: row;
-			justify-content: center;
+			display: grid;
+			grid-template-columns: auto 1fr;
 		}
 	}
 </style>

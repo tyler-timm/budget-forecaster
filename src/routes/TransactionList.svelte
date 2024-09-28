@@ -35,7 +35,6 @@
 <style>
 	.container {
 		display: flex;
-		flex-direction: row;
 		justify-content: start;
 		flex-wrap: wrap;
 		gap: 1.25rem;
@@ -64,8 +63,8 @@
 
 	@media (min-width: 640px) {
 		.container {
-			justify-content: center;
-			gap: 5rem;
+			justify-content: start;
+			/* gap: 5rem; */
 		}
 
 		.mobile-hide {
