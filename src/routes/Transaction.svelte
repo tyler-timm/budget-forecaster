@@ -3,8 +3,12 @@
 	export let transaction;
 	let edit = false;
 
-	let transactionType = transaction.type;
-	transactionType = transactionType.charAt(0).toUpperCase() + transactionType.slice(1);
+	let transactionType = '';
+    if (transaction.type === 'withdrawal') {
+        transactionType = '-';
+    } else {
+        transactionType = '+'
+    }
 
 	const transactionDate = new Date(transaction.date);
 	let recurring = transaction.recurring ? 'Yes' : 'No';
@@ -20,11 +24,11 @@
 	let transactionTypes = [
 		{
 			id: 'deposit',
-			name: 'Deposit'
+			name: '+'
 		},
 		{
 			id: 'withdrawal',
-			name: 'Withdrawal'
+			name: '-'
 		}
 	];
 
