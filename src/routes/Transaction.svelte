@@ -4,11 +4,11 @@
 	let edit = false;
 
 	let transactionType = '';
-    if (transaction.type === 'withdrawal') {
-        transactionType = '-';
-    } else {
-        transactionType = '+'
-    }
+	if (transaction.type === 'withdrawal') {
+		transactionType = 'Withdrawal';
+	} else {
+		transactionType = 'Depoosit';
+	}
 
 	const transactionDate = new Date(transaction.date);
 	let recurring = transaction.recurring ? 'Yes' : 'No';
@@ -24,11 +24,11 @@
 	let transactionTypes = [
 		{
 			id: 'deposit',
-			name: '+'
+			name: 'Deposit'
 		},
 		{
 			id: 'withdrawal',
-			name: '-'
+			name: 'Withdrawal'
 		}
 	];
 
@@ -44,35 +44,55 @@
 		<td>{transactionDate.toLocaleDateString()}</td>
 		<td class="mobile-hide">{recurring}</td>
 		<td>{transaction.description}</td>
-		<td class="mobile-hide">{transactionType}</td>
 		<td class="currency {transaction.type === 'deposit' ? 'deposit' : ''}">${amount}</td>
 		<td class="mobile-hide currency">${runningTotal}</td>
 	{:else}
-		<td>
-			<input type="date" name="date" class="date-input" width="50px" bind:value={newTransactionDateString} />
+		<td colspan="5">
+			<hr />
+			<div class="input-container">
+				<h3>Edit Transaction</h3>
+
+				<label for="date">
+					Date:
+					<input
+						type="date"
+						name="date"
+						class="date-input"
+						bind:value={newTransactionDateString}
+					/>
+				</label>
+
+				<label for="recurring"
+					>Recurring:
+					<input type="checkbox" name="recurring" bind:checked={newRecurring} />
+				</label>
+
+				<label for="description"
+					>Description:
+					<input type="text" name="description" size="18" bind:value={newDescription} />
+				</label>
+
+				<label for="type"
+					>Type:
+					<select name="type" id="type" bind:value={newSelectedTransactionType}>
+						{#each transactionTypes as transactionType}
+							<option
+								value={transactionType.id}
+								selected={transactionType.id === newSelectedTransactionType}
+							>
+								{transactionType.name}
+							</option>
+						{/each}
+					</select>
+				</label>
+
+				<label for="amount"
+					>Amount:
+					<input type="text" name="amount" size="5" bind:value={newAmount} />
+				</label>
+			</div>
+			<hr />
 		</td>
-		<td>
-			<input type="checkbox" name="recurring" bind:checked={newRecurring} />
-		</td>
-		<td>
-			<input type="text" name="description" size="18" bind:value={newDescription} />
-		</td>
-		<td>
-			<select name="type" id="type" bind:value={newSelectedTransactionType}>
-				{#each transactionTypes as transactionType}
-					<option
-						value={transactionType.id}
-						selected={transactionType.id === newSelectedTransactionType}
-					>
-						{transactionType.name}
-					</option>
-				{/each}
-			</select>
-		</td>
-		<td>
-			<input type="text" name="amount" size="5" bind:value={newAmount} />
-		</td>
-		<td class="mobile-hide currency">${runningTotal}</td>
 	{/if}
 	<td>
 		<!-- Call delete function in +page.server.js -->
@@ -143,9 +163,16 @@
 		color: #18d15c;
 	}
 
-    .date-input {
-        width: 90px;
-    }
+	.date-input {
+		width: 90px;
+	}
+
+	.input-container {
+		display: flex;
+		flex-direction: column;
+		padding: 1rem;
+        gap: 0.5rem;
+	}
 
 	@media (min-width: 640px) {
 		.mobile-hide {

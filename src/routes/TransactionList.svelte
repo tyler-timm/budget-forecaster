@@ -12,7 +12,6 @@
 				<th>Date</th>
 				<th class="mobile-hide">Monthly</th>
 				<th>Description</th>
-				<th class="mobile-hide">Type</th>
 				<th>Amount</th>
 				<th class="mobile-hide">Running Total</th>
 				<th></th>
