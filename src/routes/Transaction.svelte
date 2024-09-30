@@ -46,20 +46,28 @@
 		<td>{transaction.description}</td>
 		<td class="currency {transaction.type === 'deposit' ? 'deposit' : ''}">${amount}</td>
 		<td class="mobile-hide currency">${runningTotal}</td>
+		<td>
+			<!-- Call delete function in +page.server.js -->
+			<form method="POST" action="?/delete">
+				<input type="hidden" name="id" value={transaction.id} />
+				<input type="hidden" name="transactionsData" />
+				<button class="delete"><Icon icon="ri:delete-bin-line" /></button>
+			</form>
+		</td>
+		<td>
+			<button class="edit" on:click={() => (edit = !edit)}>
+				<Icon icon="ri:edit-2-line" />
+			</button>
+		</td>
 	{:else}
-		<td colspan="5">
+		<td colspan="7">
 			<hr />
 			<div class="input-container">
 				<h3>Edit Transaction</h3>
 
 				<label for="date">
 					Date:
-					<input
-						type="date"
-						name="date"
-						class="date-input"
-						bind:value={newTransactionDateString}
-					/>
+					<input type="date" name="date" class="date-input" bind:value={newTransactionDateString} />
 				</label>
 
 				<label for="recurring"
@@ -90,37 +98,31 @@
 					>Amount:
 					<input type="text" name="amount" size="5" bind:value={newAmount} />
 				</label>
+				<div class="button-container">
+                    <form method="POST" action="?/delete">
+                        <input type="hidden" name="id" value={transaction.id} />
+                        <input type="hidden" name="transactionsData" />
+                        <button class="delete"><Icon icon="ri:delete-bin-line" /></button>
+                    </form>
+
+                    <button class="edit" on:click={() => (edit = !edit)}>
+                        <Icon icon="ri:edit-2-line" />
+                    </button>
+
+					<form method="POST" action="?/edit">
+						<input type="hidden" name="id" value={transaction.id} />
+						<input type="hidden" name="date" value={newTransactionDateString} />
+						<input type="hidden" name="recurring" value={newRecurring} />
+						<input type="hidden" name="description" value={newDescription} />
+						<input type="hidden" name="type" value={newSelectedTransactionType} />
+						<input type="hidden" name="amount" value={newAmount} />
+						<button class="submit-edit"><Icon icon="ri:checkbox-circle-line" /></button>
+					</form>
+				</div>
 			</div>
 			<hr />
 		</td>
 	{/if}
-	<td>
-		<!-- Call delete function in +page.server.js -->
-		<form method="POST" action="?/delete">
-			<input type="hidden" name="id" value={transaction.id} />
-			<input type="hidden" name="transactionsData" />
-			<button class="delete"><Icon icon="ri:delete-bin-line" /></button>
-		</form>
-	</td>
-	<td>
-		<button class="edit" on:click={() => (edit = !edit)}>
-			<Icon icon="ri:edit-2-line" />
-		</button>
-	</td>
-	<td>
-		{#if edit}
-			<!-- Call edit function in +page.server.js -->
-			<form method="POST" action="?/edit">
-				<input type="hidden" name="id" value={transaction.id} />
-				<input type="hidden" name="date" value={newTransactionDateString} />
-				<input type="hidden" name="recurring" value={newRecurring} />
-				<input type="hidden" name="description" value={newDescription} />
-				<input type="hidden" name="type" value={newSelectedTransactionType} />
-				<input type="hidden" name="amount" value={newAmount} />
-				<button class="submit-edit"><Icon icon="ri:checkbox-circle-line" /></button>
-			</form>
-		{/if}
-	</td>
 </tr>
 
 <style>
@@ -171,8 +173,13 @@
 		display: flex;
 		flex-direction: column;
 		padding: 1rem;
-        gap: 0.5rem;
+		gap: 0.5rem;
 	}
+
+    .button-container {
+        display: flex;
+        gap: 0.5rem;
+    }
 
 	@media (min-width: 640px) {
 		.mobile-hide {
