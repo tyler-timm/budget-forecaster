@@ -3,13 +3,6 @@
 	export let transaction;
 	let edit = false;
 
-	let transactionType = '';
-	if (transaction.type === 'withdrawal') {
-		transactionType = 'Withdrawal';
-	} else {
-		transactionType = 'Depoosit';
-	}
-
 	const transactionDate = new Date(transaction.date);
 	let recurring = transaction.recurring ? 'Yes' : 'No';
 
@@ -42,11 +35,10 @@
 <tr>
 	{#if !edit}
 		<td>{transactionDate.toLocaleDateString()}</td>
-		<td class="mobile-hide">{recurring}</td>
 		<td>{transaction.description}</td>
 		<td class="currency {transaction.type === 'deposit' ? 'deposit' : ''}">${amount}</td>
-		<td class="mobile-hide currency">${runningTotal}</td>
-		<td>
+		<td class="currency">${runningTotal}</td>
+		<td class="action-icons">
 			<!-- Call delete function in +page.server.js -->
 			<form method="POST" action="?/delete">
 				<input type="hidden" name="id" value={transaction.id} />
@@ -54,13 +46,13 @@
 				<button class="delete"><Icon icon="ri:delete-bin-line" /></button>
 			</form>
 		</td>
-		<td>
+		<td class="action-icons">
 			<button class="edit" on:click={() => (edit = !edit)}>
 				<Icon icon="ri:edit-2-line" />
 			</button>
 		</td>
 	{:else}
-		<td colspan="7">
+		<td colspan="6">
 			<hr />
 			<div class="input-container">
 				<h3>Edit Transaction</h3>
@@ -99,15 +91,15 @@
 					<input type="text" name="amount" size="5" bind:value={newAmount} />
 				</label>
 				<div class="button-container">
-                    <form method="POST" action="?/delete">
-                        <input type="hidden" name="id" value={transaction.id} />
-                        <input type="hidden" name="transactionsData" />
-                        <button class="delete"><Icon icon="ri:delete-bin-line" /></button>
-                    </form>
+					<form method="POST" action="?/delete">
+						<input type="hidden" name="id" value={transaction.id} />
+						<input type="hidden" name="transactionsData" />
+						<button class="delete"><Icon icon="ri:delete-bin-line" /></button>
+					</form>
 
-                    <button class="edit" on:click={() => (edit = !edit)}>
-                        <Icon icon="ri:edit-2-line" />
-                    </button>
+					<button class="edit" on:click={() => (edit = !edit)}>
+						<Icon icon="ri:edit-2-line" />
+					</button>
 
 					<form method="POST" action="?/edit">
 						<input type="hidden" name="id" value={transaction.id} />
@@ -153,10 +145,6 @@
 		color: white;
 	}
 
-	.mobile-hide {
-		display: none;
-	}
-
 	.currency {
 		text-align: end;
 	}
@@ -176,14 +164,18 @@
 		gap: 0.5rem;
 	}
 
-    .button-container {
-        display: flex;
-        gap: 0.5rem;
-    }
+	.button-container {
+		display: flex;
+		gap: 0.5rem;
+	}
+
+	.action-icons {
+		width: 32px;
+	}
 
 	@media (min-width: 640px) {
-		.mobile-hide {
-			display: table-cell;
+		.action-icons {
+			width: 40px;
 		}
 	}
 </style>

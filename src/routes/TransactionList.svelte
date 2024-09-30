@@ -10,11 +10,9 @@
 		<thead>
 			<tr>
 				<th>Date</th>
-				<th class="mobile-hide">Monthly</th>
 				<th>Description</th>
 				<th>Amount</th>
-				<th class="mobile-hide">Running Total</th>
-				<th></th>
+				<th>Running Total</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -24,7 +22,7 @@
 		</tbody>
 		<tfoot>
 			<tr>
-				<td colspan="4">Total:</td>
+				<td colspan="3">Total:</td>
 				<td class="currency">${(total / 100).toFixed(2)}</td>
 			</tr>
 		</tfoot>
@@ -41,7 +39,7 @@
 	}
 
 	table {
-		font-size: 1.125rem;
+		font-size: 0.75rem;
 		line-height: 1.75rem;
 		border-radius: 1rem;
 	}
@@ -50,10 +48,6 @@
 		font-weight: 700;
 		padding-left: 0.5rem;
 		padding-right: 0.5rem;
-	}
-
-	.mobile-hide {
-		display: none;
 	}
 
     .currency {
@@ -66,8 +60,8 @@
 			/* gap: 5rem; */
 		}
 
-		.mobile-hide {
-			display: table-cell;
-		}
+        table {
+            font-size: 1.125rem;
+        }
 	}
 </style>
