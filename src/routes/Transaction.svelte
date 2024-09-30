@@ -133,17 +133,17 @@
 
 	.delete:hover {
 		background-color: #7f1d1d;
-		color: white;
+		/* color: white; */
 	}
 
 	.edit:hover {
 		background-color: blue;
-		color: white;
+		/* color: white; */
 	}
 
 	.submit-edit:hover {
 		background-color: green;
-		color: white;
+		/* color: white; */
 	}
 
 	.currency {
