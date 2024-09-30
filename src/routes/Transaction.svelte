@@ -1,5 +1,6 @@
 <script>
-	import Icon from '@iconify/svelte';
+	// import Icon from '@iconify/svelte';
+	import 'iconify-icon';
 	export let transaction;
 	let edit = false;
 
@@ -43,12 +44,14 @@
 			<form method="POST" action="?/delete">
 				<input type="hidden" name="id" value={transaction.id} />
 				<input type="hidden" name="transactionsData" />
-				<button class="delete"><Icon icon="ri:delete-bin-line" /></button>
+				<button class="delete">
+					<iconify-icon icon="ri:delete-bin-line" />
+				</button>
 			</form>
 		</td>
 		<td class="action-icons">
 			<button class="edit" on:click={() => (edit = !edit)}>
-				<Icon icon="ri:edit-2-line" />
+				<iconify-icon icon="ri:edit-2-line" />
 			</button>
 		</td>
 	{:else}
@@ -94,11 +97,13 @@
 					<form method="POST" action="?/delete">
 						<input type="hidden" name="id" value={transaction.id} />
 						<input type="hidden" name="transactionsData" />
-						<button class="delete"><Icon icon="ri:delete-bin-line" /></button>
+						<button class="delete">
+							<iconify-icon icon="ri:delete-bin-line" />
+						</button>
 					</form>
 
 					<button class="edit" on:click={() => (edit = !edit)}>
-						<Icon icon="ri:edit-2-line" />
+						<iconify-icon icon="ri:edit-2-line" />
 					</button>
 
 					<form method="POST" action="?/edit">
@@ -108,7 +113,9 @@
 						<input type="hidden" name="description" value={newDescription} />
 						<input type="hidden" name="type" value={newSelectedTransactionType} />
 						<input type="hidden" name="amount" value={newAmount} />
-						<button class="submit-edit"><Icon icon="ri:checkbox-circle-line" /></button>
+						<button class="submit-edit">
+							<iconify-icon icon="ri:checkbox-circle-line"></iconify-icon>
+						</button>
 					</form>
 				</div>
 			</div>
@@ -128,22 +135,21 @@
 		background-color: transparent;
 		border-radius: 0.25rem;
 		font-size: 1rem;
-        color: black;
 	}
 
 	.delete:hover {
 		background-color: #7f1d1d;
-		/* color: white; */
+		color: white;
 	}
 
 	.edit:hover {
 		background-color: blue;
-		/* color: white; */
+		color: white;
 	}
 
 	.submit-edit:hover {
 		background-color: green;
-		/* color: white; */
+		color: white;
 	}
 
 	.currency {
