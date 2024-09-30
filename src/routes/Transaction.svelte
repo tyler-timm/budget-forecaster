@@ -128,6 +128,7 @@
 		background-color: transparent;
 		border-radius: 0.25rem;
 		font-size: 1rem;
+        color: black;
 	}
 
 	.delete:hover {
