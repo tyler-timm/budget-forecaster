@@ -73,6 +73,9 @@
 <style>
 	.container {
 		margin: 1rem;
+        grid-column: 1 / 2;
+        width: fit-content;
+        text-wrap: nowrap;
 	}
 
 	.open {

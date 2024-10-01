@@ -12,12 +12,11 @@
 		color: white;
 		line-height: 2rem;
 		padding: 0.25rem 0.5rem;
+        margin-right: 1rem;
 		border-radius: 0.25rem;
 		border: none;
 		font-size: 1rem;
-		margin-left: 2.5rem;
-		top: 1rem;
-		right: 1rem;
+        width: 75px;
 	}
 
 	button:hover {

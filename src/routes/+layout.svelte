@@ -1,20 +1,18 @@
 <script>
 	import Header from './Header.svelte';
-    import '$lib/reset.css';
-    import '$lib/global-styles.css';
+	import '$lib/reset.css';
+	import '$lib/global-styles.css';
 </script>
 
 <Header />
-<main>
-	<slot></slot>
-</main>
+<slot></slot>
 
 <style>
 	:root {
 		font-family: 'Noto Sans', sans-serif;
 	}
 
-    main {
-        margin: 1rem;
-    }
+	main {
+		margin: 1rem;
+	}
 </style>

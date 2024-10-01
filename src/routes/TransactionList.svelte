@@ -36,6 +36,8 @@
 		flex-wrap: wrap;
 		gap: 1.25rem;
         margin-bottom: 2rem;
+        grid-row: 2 / 3;
+        grid-column: 2 / 3;
 	}
 
 	table {
