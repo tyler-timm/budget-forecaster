@@ -16,7 +16,6 @@
 		border: none;
 		font-size: 1rem;
 		margin-left: 2.5rem;
-		position: absolute;
 		top: 1rem;
 		right: 1rem;
 	}
