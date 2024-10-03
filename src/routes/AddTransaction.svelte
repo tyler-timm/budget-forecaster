@@ -21,63 +21,60 @@
 </script>
 
 <div class="container">
-	<aside class:open>
-		<form method="POST" action="?/create" class="nb-card">
-			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-			<h2 on:click={() => (hideElement = !hideElement)}>Add Transaction</h2>
-			<label for="date" class:hideElement
-				>Date:
-				<input type="date" name="date" id="date"/>
-			</label>
-			<label for="type" class:hideElement
-				>Type:
-				<select name="type" id="type" bind:value={selectedTransactionType}>
-					{#each transactionTypes as transactionType}
-						<option value={transactionType.id}>
-							{transactionType.name}
-						</option>
-					{/each}
-				</select>
-			</label>
-			<label for="description" class:hideElement
-				>Description:
-				<input type="text" name="description" id="description" size="14" bind:value={description} />
-			</label>
-			<label for="recurring-monthly" class:hideElement
-				>New Starting Balance:
-				<input
-					type="checkbox"
-					name="new-starting-balance"
-					id="new-starting-balance"
-					bind:checked={newStartingBalance}
-				/>
-			</label>
-			<label for="recurring-monthly" class:hideElement
-				>Monthly:
-				<input
-					type="checkbox"
-					name="recurring-monthly"
-					id="recurring-monthly"
-					bind:checked={monthly}
-				/>
-			</label>
-			<label for="amount" class:hideElement
-				>Amount:
-				<input
-					type="text"
-					name="amount"
-					id="amount"
-					placeholder="$0.00"
-					size="14"
-					bind:value={amount}
-				/>
-			</label>
+	<form method="POST" action="?/create" class="nb-card">
+		<!-- svelte-ignore a11y-click-events-have-key-events -->
+		<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+		<h2 on:click={() => (hideElement = !hideElement)}>Add Transaction</h2>
+		<label for="date" class:hideElement
+			>Date:
+			<input type="date" name="date" id="date" />
+		</label>
+		<label for="type" class:hideElement
+			>Type:
+			<select name="type" id="type" bind:value={selectedTransactionType}>
+				{#each transactionTypes as transactionType}
+					<option value={transactionType.id}>
+						{transactionType.name}
+					</option>
+				{/each}
+			</select>
+		</label>
+		<label for="description" class:hideElement
+			>Description:
+			<input type="text" name="description" id="description" size="14" bind:value={description} />
+		</label>
+		<label for="recurring-monthly" class:hideElement
+			>New Starting Balance:
+			<input
+				type="checkbox"
+				name="new-starting-balance"
+				id="new-starting-balance"
+				bind:checked={newStartingBalance}
+			/>
+		</label>
+		<label for="recurring-monthly" class:hideElement
+			>Monthly:
+			<input
+				type="checkbox"
+				name="recurring-monthly"
+				id="recurring-monthly"
+				bind:checked={monthly}
+			/>
+		</label>
+		<label for="amount" class:hideElement
+			>Amount:
+			<input
+				type="text"
+				name="amount"
+				id="amount"
+				placeholder="$0.00"
+				size="14"
+				bind:value={amount}
+			/>
+		</label>
 
-			<button type="submit" class="submit-button nb-card" class:hideElement>Submit</button>
-		</form>
-	</aside>
-	<!-- <button on:click={() => (open = !open)} class="show-hide">New Transaction</button> -->
+		<button type="submit" class="submit-button nb-card" class:hideElement>Submit</button>
+	</form>
 </div>
 
 <style>
@@ -88,22 +85,11 @@
 		grid-column: 1 / 2;
 		width: fit-content;
 		text-wrap: nowrap;
-	}
-
-	.open {
-		left: 0;
+		font-size: 1.125rem;
 	}
 
 	.hideElement {
 		display: none;
-	}
-
-	aside {
-		font-size: 1.125rem;
-		left: -100%;
-		transition: left 0.3s ease-in-out;
-		position: relative;
-		margin-bottom: 2rem;
 	}
 
 	form {
@@ -151,16 +137,6 @@
 
 	.submit-button:hover {
 		background-color: #166534;
-	}
-
-	.show-hide {
-		background-color: #264653;
-		display: block;
-		position: fixed;
-	}
-
-	.show-hide:hover {
-		background-color: #264653bd;
 	}
 
 	input[type='checkbox'] {
