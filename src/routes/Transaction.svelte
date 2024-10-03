@@ -125,11 +125,6 @@
 </tr>
 
 <style>
-	td {
-		padding-left: 0.25rem;
-		padding-right: 0.25rem;
-	}
-
 	button {
 		border: transparent;
 		background-color: transparent;
