@@ -17,17 +17,20 @@
 	let newStartingBalance = false;
 
 	let open = true;
+	let hideElement = true;
 </script>
 
 <div class="container">
 	<aside class:open>
 		<form method="POST" action="?/create" class="nb-card">
-			<h2>Add Transaction</h2>
-			<label for="date"
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
+			<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+			<h2 on:click={() => (hideElement = !hideElement)}>Add Transaction</h2>
+			<label for="date" class:hideElement
 				>Date:
-				<input type="date" name="date" id="date" />
+				<input type="date" name="date" id="date"/>
 			</label>
-			<label for="type"
+			<label for="type" class:hideElement
 				>Type:
 				<select name="type" id="type" bind:value={selectedTransactionType}>
 					{#each transactionTypes as transactionType}
@@ -37,11 +40,11 @@
 					{/each}
 				</select>
 			</label>
-			<label for="description"
+			<label for="description" class:hideElement
 				>Description:
 				<input type="text" name="description" id="description" size="14" bind:value={description} />
 			</label>
-			<label for="recurring-monthly"
+			<label for="recurring-monthly" class:hideElement
 				>New Starting Balance:
 				<input
 					type="checkbox"
@@ -50,7 +53,7 @@
 					bind:checked={newStartingBalance}
 				/>
 			</label>
-			<label for="recurring-monthly"
+			<label for="recurring-monthly" class:hideElement
 				>Monthly:
 				<input
 					type="checkbox"
@@ -59,29 +62,40 @@
 					bind:checked={monthly}
 				/>
 			</label>
-			<label for="amount"
+			<label for="amount" class:hideElement
 				>Amount:
-				<input type="text" name="amount" id="amount" placeholder="$0.00" size="14" bind:value={amount} />
+				<input
+					type="text"
+					name="amount"
+					id="amount"
+					placeholder="$0.00"
+					size="14"
+					bind:value={amount}
+				/>
 			</label>
 
-			<button type="submit" class="submit-button nb-card">Submit</button>
+			<button type="submit" class="submit-button nb-card" class:hideElement>Submit</button>
 		</form>
 	</aside>
-    <!-- <button on:click={() => (open = !open)} class="show-hide">New Transaction</button> -->
+	<!-- <button on:click={() => (open = !open)} class="show-hide">New Transaction</button> -->
 </div>
 
 <style>
 	.container {
 		margin-top: 1rem;
-        margin-left: 1rem;
-        margin-right: 1rem;
-        grid-column: 1 / 2;
-        width: fit-content;
-        text-wrap: nowrap;
+		margin-left: 1rem;
+		margin-right: 1rem;
+		grid-column: 1 / 2;
+		width: fit-content;
+		text-wrap: nowrap;
 	}
 
 	.open {
 		left: 0;
+	}
+
+	.hideElement {
+		display: none;
 	}
 
 	aside {
@@ -89,7 +103,7 @@
 		left: -100%;
 		transition: left 0.3s ease-in-out;
 		position: relative;
-        margin-bottom: 2rem;
+		margin-bottom: 2rem;
 	}
 
 	form {
