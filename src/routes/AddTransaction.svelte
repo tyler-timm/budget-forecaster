@@ -21,7 +21,7 @@
 
 <div class="container">
 	<aside class:open>
-		<form method="POST" action="?/create" class="card-shadow">
+		<form method="POST" action="?/create" class="nb-card">
 			<h2>Add Transaction</h2>
 			<label for="date"
 				>Date:
@@ -64,7 +64,7 @@
 				<input type="text" name="amount" id="amount" placeholder="$0.00" size="14" bind:value={amount} />
 			</label>
 
-			<button type="submit" class="submit-button">Submit</button>
+			<button type="submit" class="submit-button nb-card">Submit</button>
 		</form>
 	</aside>
     <!-- <button on:click={() => (open = !open)} class="show-hide">New Transaction</button> -->
@@ -72,7 +72,9 @@
 
 <style>
 	.container {
-		margin: 1rem;
+		margin-top: 1rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
         grid-column: 1 / 2;
         width: fit-content;
         text-wrap: nowrap;
@@ -97,11 +99,8 @@
 		justify-items: flex-start;
 		gap: 0px;
 		line-height: 2rem;
-		/* border: 1px solid white; */
-		border-radius: 1rem;
 		padding: 1rem;
 		background-color: white;
-        width: fit-content
 	}
 
 	h2 {
@@ -127,8 +126,8 @@
 	button {
 		color: white;
 		padding: 0.25rem 0.5rem;
-		border-radius: 0.25rem;
-		border-color: transparent;
+		/* border-radius: 0.25rem; */
+		/* border-color: transparent; */
 	}
 
 	.submit-button {

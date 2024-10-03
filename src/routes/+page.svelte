@@ -22,7 +22,7 @@
 		margin: 1rem;
 	}
 
-	@media (min-width: 1300px) {
+	@media (min-width: 1080px) {
 		.container {
 			grid-template-columns: auto 1fr;
 		}

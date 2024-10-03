@@ -34,7 +34,6 @@
 		display: flex;
 		justify-content: start;
 		flex-wrap: wrap;
-		gap: 1.25rem;
         margin-bottom: 2rem;
         grid-row: 2 / 3;
         grid-column: 2 / 3;
@@ -46,12 +45,6 @@
 		border-radius: 1rem;
 	}
 
-	th {
-		font-weight: 700;
-		padding-left: 0.5rem;
-		padding-right: 0.5rem;
-	}
-
     .currency {
 		text-align: end;
 	}
@@ -59,7 +52,6 @@
 	@media (min-width: 640px) {
 		.container {
 			justify-content: start;
-			/* gap: 5rem; */
 		}
 
         table {
