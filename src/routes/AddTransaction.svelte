@@ -39,7 +39,7 @@
 			</label>
 			<label for="description"
 				>Description:
-				<input type="text" name="description" id="description" bind:value={description} />
+				<input type="text" name="description" id="description" size="14" bind:value={description} />
 			</label>
 			<label for="recurring-monthly"
 				>New Starting Balance:
@@ -61,7 +61,7 @@
 			</label>
 			<label for="amount"
 				>Amount:
-				<input type="text" name="amount" id="amount" placeholder="$0.00" bind:value={amount} />
+				<input type="text" name="amount" id="amount" placeholder="$0.00" size="14" bind:value={amount} />
 			</label>
 
 			<button type="submit" class="submit-button">Submit</button>
