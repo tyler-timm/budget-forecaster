@@ -83,7 +83,7 @@
 		margin-left: 1rem;
 		margin-right: 1rem;
 		grid-column: 1 / 2;
-		width: fit-content;
+		width: 22rem;
 		text-wrap: nowrap;
 		font-size: 1.125rem;
 	}
