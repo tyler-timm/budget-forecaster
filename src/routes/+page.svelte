@@ -8,18 +8,12 @@
 
 <div class="container">
     <AddTransaction />
-	<main>
-		<TransactionList {data} />
-	</main>
+	<TransactionList {data} />
 </div>
 
 <style>
 	.container {
 		display: grid;
-	}
-
-	main {
-		margin: 1rem;
 	}
 
 	@media (min-width: 1080px) {

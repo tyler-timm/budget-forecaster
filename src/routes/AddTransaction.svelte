@@ -79,13 +79,11 @@
 
 <style>
 	.container {
-		margin-top: 1rem;
-		margin-left: 1rem;
-		margin-right: 1rem;
-		grid-column: 1 / 2;
 		width: 22rem;
 		text-wrap: nowrap;
 		font-size: 1.125rem;
+        margin-bottom: 1rem;
+        margin-right: 1rem;
 	}
 
 	.hideElement {

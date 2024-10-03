@@ -11,6 +11,7 @@
 				<ul>
 					<li><a href="/">Home</a></li>
 					<li><a href="/recurring">Recurring Transactions</a></li>
+					<li><a href="/tech">Tech</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -20,6 +21,7 @@
 		<ul>
 			<li><a href="/">Home</a></li>
 			<li><a href="/recurring">Recurring Transactions</a></li>
+			<li><a href="/tech">Tech</a></li>
 		</ul>
 	</nav>
 </div>
@@ -46,6 +48,12 @@
 		font-weight: 700;
 		color: #eab308;
 		text-decoration: none;
+	}
+
+	a:hover {
+		/* border: 3px solid #eab308; */
+		background-color: #213d49;
+		border-radius: 20px;
 	}
 
 	li {

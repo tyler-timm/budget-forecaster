@@ -5,7 +5,9 @@
 </script>
 
 <Header />
-<slot></slot>
+<main>
+	<slot></slot>
+</main>
 
 <style>
 	:root {
