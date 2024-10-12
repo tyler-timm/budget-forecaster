@@ -2,29 +2,27 @@
 	import Signout from './Signout.svelte';
 </script>
 
-<div class="wrapper">
-	<header>
-		<div class="header-left">
-			<img src="./flying-piggy-bank.png" alt="flying piggy bank" width="60" height="60" />
-			<h1>Budget Forecaster</h1>
-			<nav class="fullscreen-nav">
-				<ul>
-					<li><a href="/">Home</a></li>
-					<li><a href="/recurring">Recurring Transactions</a></li>
-					<li><a href="/tech">Tech</a></li>
-				</ul>
-			</nav>
-		</div>
-		<Signout />
-	</header>
-	<nav class="mobile-nav">
-		<ul>
-			<li><a href="/">Home</a></li>
-			<li><a href="/recurring">Recurring Transactions</a></li>
-			<li><a href="/tech">Tech</a></li>
-		</ul>
-	</nav>
-</div>
+<header>
+	<div class="header-left">
+		<img src="./flying-piggy-bank.png" alt="flying piggy bank" width="60" height="60" />
+		<h1>Budget Forecaster</h1>
+		<nav class="fullscreen-nav">
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/recurring">Recurring Transactions</a></li>
+				<li><a href="/tech">Tech</a></li>
+			</ul>
+		</nav>
+	</div>
+	<Signout />
+</header>
+<nav class="mobile-nav">
+	<ul>
+		<li><a href="/">Home</a></li>
+		<li><a href="/recurring">Recurring Transactions</a></li>
+		<li><a href="/tech">Tech</a></li>
+	</ul>
+</nav>
 
 <style>
 	header {
@@ -35,7 +33,7 @@
 		z-index: 20;
 		background-color: #264653;
 		justify-content: space-between;
-		width: 100vw;
+		width: 99vw;
 	}
 
 	nav {
@@ -54,7 +52,7 @@
 		/* border: 3px solid #eab308; */
 		background-color: #213d49;
 		border-radius: 20px;
-        text-decoration: underline;
+		text-decoration: underline;
 	}
 
 	li {
@@ -67,11 +65,6 @@
 		font-weight: 700;
 		padding: 1.25rem;
 		color: #eab308;
-	}
-
-	.wrapper {
-		grid-row: 1 / 2;
-		grid-column: 1 / 3;
 	}
 
 	.header-left {

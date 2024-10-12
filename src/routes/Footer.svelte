@@ -5,6 +5,9 @@
 <footer>
 	<ul>
 		<li>
+			<span class="author">Tyler Timm</span>
+		</li>
+		<li>
 			<iconify-icon icon="ri:svelte-fill" />
 		</li>
 		<li>
@@ -29,6 +32,14 @@
 		font-size: 2rem;
 	}
 
+    iconify-icon {
+        padding-top: 0.5rem;
+    }
+
+	.author {
+		font-size: 1.5rem;
+	}
+
 	@media (min-width: 620px) {
 	}
 
@@ -36,9 +47,9 @@
 		ul {
 			display: flex;
 			flex-direction: row;
-            gap: 1rem;
-            margin-top: 1rem;
-            margin-bottom: 1rem;
+			gap: 1.5rem;
+			margin-top: 1rem;
+			margin-bottom: 1rem;
 		}
 	}
 </style>
