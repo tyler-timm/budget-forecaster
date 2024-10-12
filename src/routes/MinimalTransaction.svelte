@@ -18,7 +18,9 @@
 	<td>{transaction.description}</td>
 	<td class="currency {(transaction.type === 'deposit') ? 'deposit' : ''}">${amount}</td>
 	<td>
-		<button>X</button>
+		<button>
+			<iconify-icon icon="ri:delete-bin-line" />
+		</button>
 	</td>
 </tr>
 
