@@ -1,5 +1,6 @@
 <script>
 	import Header from './Header.svelte';
+    import Footer from './Footer.svelte';
 	import '$lib/reset.css';
 	import '$lib/global-styles.css';
 </script>
@@ -8,6 +9,7 @@
 <main>
 	<slot></slot>
 </main>
+<Footer />
 
 <style>
 	:root {

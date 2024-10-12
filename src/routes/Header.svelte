@@ -54,6 +54,7 @@
 		/* border: 3px solid #eab308; */
 		background-color: #213d49;
 		border-radius: 20px;
+        text-decoration: underline;
 	}
 
 	li {

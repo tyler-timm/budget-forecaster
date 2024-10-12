@@ -1,0 +1,44 @@
+<script>
+	import 'iconify-icon';
+</script>
+
+<footer>
+	<ul>
+		<li>
+			<iconify-icon icon="ri:svelte-fill" />
+		</li>
+		<li>
+			<iconify-icon icon="simple-icons:lucia" />
+		</li>
+		<li>
+			<iconify-icon icon="simple-icons:iconify" />
+		</li>
+	</ul>
+</footer>
+
+<style>
+	footer {
+		display: flex;
+		align-items: center;
+		background-color: #264653;
+	}
+
+	li {
+		list-style-type: none;
+		color: #eab308;
+		font-size: 2rem;
+	}
+
+	@media (min-width: 620px) {
+	}
+
+	@media (min-width: 915px) {
+		ul {
+			display: flex;
+			flex-direction: row;
+            gap: 1rem;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+		}
+	}
+</style>
