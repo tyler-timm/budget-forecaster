@@ -39,11 +39,12 @@
 	}
 
 	button {
-		border: 1px solid black;
+		border: transparent;
 		background-color: transparent;
 		border-radius: 0.25rem;
 		font-size: 1rem;
-        padding: 0 .4rem;
+  padding: 0 .4rem;
+		color: black;
 	}
 
 	button:hover {
