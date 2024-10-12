@@ -7,9 +7,6 @@
 	let tranDate = new Date(transaction.date);
 
 	let amount = transaction.amount / 100;
-	// if (transaction.type === 'withdrawal') {
-	// 	amount = amount * -1;
-	// }
 	amount = amount.toFixed(2);
 </script>
 
@@ -18,9 +15,12 @@
 	<td>{transaction.description}</td>
 	<td class="currency {(transaction.type === 'deposit') ? 'deposit' : ''}">${amount}</td>
 	<td>
-		<button>
-			<iconify-icon icon="ri:delete-bin-line" />
-		</button>
+		<form method="POST" action="?/delete">
+			<input type="hidden" name="id" value={transaction.id} />
+			<button class="delete">
+				<iconify-icon icon="ri:delete-bin-line" />
+			</button>
+		</form>
 	</td>
 </tr>
 
