@@ -16,6 +16,15 @@
 		<li>
 			<iconify-icon icon="simple-icons:iconify" />
 		</li>
+		<li>
+			<iconify-icon icon="simple-icons:postgresql" />
+		</li>
+		<li>
+			<iconify-icon icon="logos:neon-icon" />
+		</li>
+		<li>
+			<iconify-icon icon="simple-icons:netlify" />
+		</li>
 	</ul>
 </footer>
 
