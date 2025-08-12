@@ -111,14 +111,15 @@ export const actions = {
 
         let date = formData.get('date');
 
-        const newTransactionData = {
-            date: date ? new Date(`${date}T00:00:00.000`) : new Date(),
-            type: formData.get('type'),
-            description: formData.get('description'),
-            newStartingBalance: newStartingBalance,
-            recurring: recurring,
-            amount: amount
-        }
+            // Always parse date as UTC
+            const newTransactionData = {
+                date: date ? new Date(`${date}T00:00:00.000Z`) : new Date(),
+                type: formData.get('type'),
+                description: formData.get('description'),
+                newStartingBalance: newStartingBalance,
+                recurring: recurring,
+                amount: amount
+            }
         console.log('newTransactionData', newTransactionData);
         const response = await addTransaction(newTransactionData);
         console.log('add transaction response', response);
@@ -132,14 +133,15 @@ export const actions = {
         let amount = formData.get('amount');
         amount = amount * 100;
 
-        const newTransactionData = {
-            id: formData.get('id'),
-            date: formData.get('date'),
-            type: formData.get('type'),
-            description: formData.get('description'),
-            recurring: formData.get('recurring'),
-            amount: amount
-        }
+            // Always parse date as UTC
+            const newTransactionData = {
+                id: formData.get('id'),
+                date: formData.get('date') ? new Date(`${formData.get('date')}T00:00:00.000Z`) : new Date(),
+                type: formData.get('type'),
+                description: formData.get('description'),
+                recurring: formData.get('recurring'),
+                amount: amount
+            }
         console.log('newTransactionData', newTransactionData);
         const response = await editTransaction(newTransactionData);
         console.log('edit transaction response', response);
