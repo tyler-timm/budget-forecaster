@@ -5,7 +5,6 @@ import { lucia } from "$lib/server/auth";
 export async function load(event) {
     if (!event.locals.user) redirect(302, "/login");
     const recurrences = 2;
-    let total = 0;
     let recurringTotal = 0;
 
     let transactions = await getTransactions();
@@ -17,14 +16,10 @@ export async function load(event) {
         if (tran.type === 'withdrawal') {
             amount = amount * -1;
         }
-        // tran.amount = amount;
 
         let localDate = tran.date.replace('Z', '');
         let transactionDate = new Date(localDate);
-
         tran.date = transactionDate;
-
-        total = total + amount;
     }
 
     let recurringTransactions = [];
@@ -52,7 +47,7 @@ export async function load(event) {
                 newTran.date = new Date(tran.date).setMonth(tran.date.getMonth() + i);
                 newTran.clientId = `${tran.id}-${i}`;
                 transactions = [...transactions, newTran];
-                total = total + amount;
+                // Do NOT add recurring amounts to total here
             }
             recurringTransactions.push(tran)
             recurringTotal = recurringTotal + recurringAmount;
@@ -81,6 +76,15 @@ export async function load(event) {
         runningTotal = runningTotal + amount;
         transaction.runningTotal = runningTotal;
     }
+
+    // Calculate total from final transactions array
+    let total = transactions.reduce((sum, transaction) => {
+        let amount = parseInt(transaction.amount);
+        if (transaction.type === 'withdrawal') {
+            amount = amount * -1;
+        }
+        return sum + amount;
+    }, 0);
 
     console.log('data loaded', new Date());
 
