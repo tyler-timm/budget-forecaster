@@ -4,6 +4,11 @@
 	export let transaction;
 	let edit = false;
 
+	const displayDate =
+		typeof transaction.date === 'string' && transaction.date.includes('T')
+			? transaction.date.split('T')[0]
+			: transaction.date;
+
 	const transactionDate = new Date(transaction.date);
 	let recurring = transaction.recurring ? 'Yes' : 'No';
 
@@ -26,16 +31,22 @@
 		}
 	];
 
-	let newTransactionDateString = transactionDate.toLocaleDateString();
+	let newTransactionDateString = displayDate;
 	let newRecurring = recurring;
 	let newDescription = transaction.description;
 	let newSelectedTransactionType = transaction.type;
 	let newAmount = amount;
+
+	// Function to format date for display only
+	function formatDateForDisplay(dateString) {
+		const date = new Date(dateString + 'T00:00:00');
+		return date.toLocaleDateString();
+	}
 </script>
 
 <tr>
 	{#if !edit}
-		<td>{transactionDate.toLocaleDateString()}</td>
+		<td>{formatDateForDisplay(displayDate)}</td>
 		<td>{transaction.description}</td>
 		<td class="currency {transaction.type === 'deposit' ? 'deposit' : ''}">${amount}</td>
 		<td class="currency">${runningTotal}</td>
@@ -130,7 +141,7 @@
 		background-color: transparent;
 		border-radius: 0.25rem;
 		font-size: 1rem;
-        color: black;
+		color: black;
 	}
 
 	.delete:hover {

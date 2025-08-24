@@ -1,5 +1,5 @@
 import { getTransactions } from '$lib/db';
-import {  redirect } from '@sveltejs/kit';
+import { redirect } from '@sveltejs/kit';
 
 export async function load(event) {
     if (!event.locals.user) redirect(302, "/login");
@@ -18,10 +18,9 @@ export async function load(event) {
         }
         // tran.amount = amount;
 
-        let localDate = tran.date.replace('Z', '');
-        let transactionDate = new Date(localDate);
-
-        tran.date = transactionDate;
+        if (typeof tran.date === 'string' && tran.date.includes('T')) {
+            tran.date = tran.date.split('T')[0]; // Gets 'YYYY-MM-DD'
+        }
 
         total = total + amount;
     }
@@ -37,18 +36,25 @@ export async function load(event) {
             }
 
             // Set first recurrence date after start date
+            const tranDate = new Date(tran.date + 'T00:00:00');
             const startMonth = startDate.getMonth();
             const startDay = startDate.getDate();
             const startYear = startDate.getFullYear();
-            if (startDay > tran.date.getDate()) {
-                tran.date = new Date(startYear, startMonth + 1, tran.date.getDate());
+
+            let recurringDate;
+            if (startDay > tranDate.getDate()) {
+                recurringDate = new Date(startYear, startMonth + 1, tranDate.getDate());
             } else {
-                tran.date = new Date(startYear, startMonth, tran.date.getDate());
+                recurringDate = new Date(startYear, startMonth, tranDate.getDate());
             }
+
+            tran.date = recurringDate.toISOString().split('T')[0];
 
             for (let i = 1; i < recurrences; i++) {
                 let newTran = { ...tran };
-                newTran.date = new Date(tran.date).setMonth(tran.date.getMonth() + i);
+                const nextDate = new Date(recurringDate)
+                nextDate.setMonth(nextDate.getMonth() + i);
+                newTran.date = nextDate.toISOString().split('T')[0]; // Back to string
                 newTran.clientId = `${tran.id}-${i}`;
                 transactions = [...transactions, newTran];
                 total = total + amount;
@@ -59,16 +65,17 @@ export async function load(event) {
     }
 
     // Sort transactions by date
-    transactions.sort((a, b) => new Date(a.date) - new Date(b.date));
-    recurringTransactions.sort((a, b) => new Date(a.date).getDate() - new Date(b.date).getDate());
+    transactions.sort((a, b) => a.date.localeCompare(b.date));
+    recurringTransactions.sort((a, b) => {
+        const aDay = new Date(a.date + 'T00:00:00').getDate();
+        const bDay = new Date(b.date + 'T00:00:00').getDate();
+        return aDay - bDay;
+    });
+
     // Filter out transactions before start date
     transactions = transactions.filter(tran => {
-        let date = tran.date;
-        if (typeof date !== 'number') {
-            date = date.getTime();
-        }
-        return date >= startDate.getTime();
-    })
+        return tran.date >= startDate.toISOString().split('T')[0];
+    });
 
     // Add running totals to each transaction
     let runningTotal = 0;
@@ -93,5 +100,6 @@ function getStartDate(transactions) {
             startDate = tran.date;
         }
     }
-    return startDate;
+    
+    return new Date(startDate + 'T00:00:00');
 }

@@ -17,9 +17,9 @@ export async function load(event) {
             amount = amount * -1;
         }
 
-        let localDate = tran.date.replace('Z', '');
-        let transactionDate = new Date(localDate);
-        tran.date = transactionDate;
+        if (typeof tran.date === 'string' && tran.date.includes('T')) {
+            tran.date = tran.date.split('T')[0]; // Gets 'YYYY-MM-DD'
+        }
     }
 
     let recurringTransactions = [];
@@ -33,19 +33,24 @@ export async function load(event) {
             }
 
             // Set first recurrence date after start date
+            const tranDate = new Date(tran.date + 'T00:00:00'); // Add time to avoid timezone issues
             const startMonth = startDate.getMonth();
             const startDay = startDate.getDate();
             const startYear = startDate.getFullYear();
-            if (startDay > tran.date.getDate()) {
-                tran.date = new Date(startYear, startMonth + 1, tran.date.getDate());
+            let recurringDate;
+            if (startDay > tranDate.getDate()) {
+                recurringDate = new Date(startYear, startMonth + 1, tranDate.getDate());
             } else {
-                tran.date = new Date(startYear, startMonth, tran.date.getDate());
+                recurringDate = new Date(startYear, startMonth, tranDate.getDate());
             }
+
+            tran.date = recurringDate.toISOString().split('T')[0];
 
             for (let i = 1; i < recurrences; i++) {
                 let newTran = { ...tran };
-                newTran.date = new Date(tran.date).setMonth(tran.date.getMonth() + i);
-                newTran.clientId = `${tran.id}-${i}`;
+                const nextDate = new Date(recurringDate);
+                nextDate.setMonth(nextDate.getMonth() + i);
+                newTran.date = nextDate.toISOString().split('T')[0]; // Back to string
                 transactions = [...transactions, newTran];
                 // Do NOT add recurring amounts to total here
             }
@@ -56,14 +61,14 @@ export async function load(event) {
 
     // Sort transactions by date
     transactions.sort((a, b) => new Date(a.date) - new Date(b.date));
-    recurringTransactions.sort((a, b) => new Date(a.date).getDate() - new Date(b.date).getDate());
+    recurringTransactions.sort((a, b) => {
+        const aDay = new Date(a.date + 'T00:00:00').getDate();
+        const bDay = new Date(b.date + 'T00:00:00').getDate();
+        return aDay - bDay;
+    });
     // Filter out transactions before start date
     transactions = transactions.filter(tran => {
-        let date = tran.date;
-        if (typeof date !== 'number') {
-            date = date.getTime();
-        }
-        return date >= startDate.getTime();
+        return tran.date >= startDate.toISOString().split('T')[0];
     })
 
     // Add running totals to each transaction
@@ -114,16 +119,15 @@ export const actions = {
         }
 
         let date = formData.get('date');
-
-            // Always parse date as UTC
-            const newTransactionData = {
-                date: date ? new Date(`${date}T00:00:00.000Z`) : new Date(),
-                type: formData.get('type'),
-                description: formData.get('description'),
-                newStartingBalance: newStartingBalance,
-                recurring: recurring,
-                amount: amount
-            }
+        // Always parse date as UTC
+        const newTransactionData = {
+            date: date || new Date().toISOString().split('T')[0],
+            type: formData.get('type'),
+            description: formData.get('description'),
+            newStartingBalance: newStartingBalance,
+            recurring: recurring,
+            amount: amount
+        }
         console.log('newTransactionData', newTransactionData);
         const response = await addTransaction(newTransactionData);
         console.log('add transaction response', response);
@@ -137,15 +141,15 @@ export const actions = {
         let amount = formData.get('amount');
         amount = amount * 100;
 
-            // Always parse date as UTC
-            const newTransactionData = {
-                id: formData.get('id'),
-                date: formData.get('date') ? new Date(`${formData.get('date')}T00:00:00.000Z`) : new Date(),
-                type: formData.get('type'),
-                description: formData.get('description'),
-                recurring: formData.get('recurring'),
-                amount: amount
-            }
+        // Always parse date as UTC
+        const newTransactionData = {
+            id: formData.get('id'),
+            date: formData.get('date') || new Date().toISOString().split('T')[0],
+            type: formData.get('type'),
+            description: formData.get('description'),
+            recurring: formData.get('recurring'),
+            amount: amount
+        }
         console.log('newTransactionData', newTransactionData);
         const response = await editTransaction(newTransactionData);
         console.log('edit transaction response', response);
@@ -180,5 +184,5 @@ function getStartDate(transactions) {
             startDate = tran.date;
         }
     }
-    return startDate;
+    return new Date(startDate + 'T00:00:00');
 }
